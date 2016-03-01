@@ -1,6 +1,3 @@
-window.$ = django.jQuery;
-window.jQuery = $;
-
 (function($){
     // On DOM load
     $(function(){
