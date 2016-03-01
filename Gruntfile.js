@@ -41,5 +41,4 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-stylus');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.registerTask('default', ['stylus']);
-    grunt.registerTask('prod', ['stylus']);
 };
