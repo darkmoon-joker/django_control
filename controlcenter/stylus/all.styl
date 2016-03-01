@@ -181,6 +181,10 @@
         &:last-child
             padding-right $axis-x
 
+        // Fit it
+        &--pk, &--id
+            width 1%
+
     &__th
         color #888
 
@@ -227,6 +231,7 @@
                 background #fafafa
 
 
+// Charts
 .controlcenter__chart-legend
     overflow hidden
     padding 8px
@@ -253,18 +258,21 @@
         &__label
             margin-left 15px
 
+.ct-chart:empty
+    background-size 28px auto
+    background-image embedurl('../images/chart-no-data.png')
+    background-position center
+    background-repeat no-repeat
+
 
 // Grappelli overwrites
-
 #grp-content-title
     display none
 
 #grp-content
     padding-bottom 0
 
-
-.ct-chart:empty
-    background-size 28px auto
-    background-image embedurl('../images/chart-no-data.png')
-    background-position center
-    background-repeat no-repeat
+// Django overrides
+#content
+    > h1
+        display none

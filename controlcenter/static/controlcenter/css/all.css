@@ -190,6 +190,12 @@
 .controlcenter__table__td:last-child {
   padding-right: 14px;
 }
+.controlcenter__table__th--pk,
+.controlcenter__table__td--pk,
+.controlcenter__table__th--id,
+.controlcenter__table__td--id {
+  width: 1%;
+}
 .controlcenter__table__th {
   color: #888;
 }
@@ -259,15 +265,18 @@
 .controlcenter__chart-legend__series__label {
   margin-left: 15px;
 }
+.ct-chart:empty {
+  background-size: 28px auto;
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAAqAQMAAADcVgrNAAAABlBMVEUAAAD/UE2pKe1bAAAAAXRSTlMAQObYZgAAACZJREFUeAFj+MAABPYHyKEZ/1GDrm8gku7/SBeaAQwI0v8hAJ0GALO/lSB/0yDtAAAAAElFTkSuQmCC");
+  background-position: center;
+  background-repeat: no-repeat;
+}
 #grp-content-title {
   display: none;
 }
 #grp-content {
   padding-bottom: 0;
 }
-.ct-chart:empty {
-  background-size: 28px auto;
-  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAAqAQMAAADcVgrNAAAABlBMVEUAAAD/UE2pKe1bAAAAAXRSTlMAQObYZgAAACZJREFUeAFj+MAABPYHyKEZ/1GDrm8gku7/SBeaAQwI0v8hAJ0GALO/lSB/0yDtAAAAAElFTkSuQmCC");
-  background-position: center;
-  background-repeat: no-repeat;
+#content > h1 {
+  display: none;
 }
