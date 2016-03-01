@@ -1,0 +1,12 @@
+{
+  "name": "django-controlcenter",
+  "author": "Murad Byashimov",
+  "dependencies": {
+    "autoprefixer-stylus": "*",
+    "grunt": "*",
+    "grunt-contrib-stylus": "*",
+    "grunt-contrib-watch": "*",
+    "load-grunt-tasks": "*"
+  },
+  "engine": "node >= 0.10"
+}
