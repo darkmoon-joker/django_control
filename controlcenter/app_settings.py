@@ -34,8 +34,8 @@ class AppSettingsMeta(type):
             # http://mail.python.org/pipermail/python-ideas/2012-May/
             # 014969.html
             ins = cls()
-            ins.__name__ = __name__
-            sys.modules[__name__] = ins
+            ins.__name__ = ins.__module__
+            sys.modules[ins.__module__] = ins
         return cls
 
 
