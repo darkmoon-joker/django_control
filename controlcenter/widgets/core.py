@@ -145,4 +145,4 @@ class ItemList(Widget):
     list_display = None
     list_display_links = None
     template_name = 'itemlist.html'
-    empty_message = 'No item to display'
+    empty_message = 'No items to display'
