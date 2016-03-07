@@ -109,7 +109,7 @@ def changelist_url(widget):
         urlparams = params
 
     if urlparams and not urlparams.startswith('?'):
-        urlparams = u'?' + urlparams
+        urlparams = '?' + urlparams
 
     changelist_url = reverse('admin:{}_{}_changelist'
                              .format(model._meta.app_label,

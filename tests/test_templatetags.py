@@ -39,7 +39,7 @@ class SimpleTagsTest(TestCase):
         widget.changelist_url = 'test'
 
         # Original
-        admin_changelist_url = u'/admin/auth/user/'
+        admin_changelist_url = '/admin/auth/user/'
 
         # String test
         self.assertEqual(changelist_url(widget), 'test')
@@ -242,7 +242,7 @@ class ChangeurlTest(TestCase):
                                      username + 'password')
 
         self.obj = User.objects.first()
-        self.obj_url = u'/admin/auth/user/{}/'.format(self.obj.pk)
+        self.obj_url = '/admin/auth/user/{}/'.format(self.obj.pk)
         if VERSION > (1, 9):
             self.obj_url += 'change/'
 
