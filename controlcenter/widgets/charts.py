@@ -72,9 +72,6 @@ class Chart(six.with_metaclass(ChartMeta, Widget)):
         # Do not return generator!
         return []
 
-    def values(self):
-        return []
-
 
 class LineChart(Chart):
     class Chartist:

@@ -2,6 +2,7 @@ from controlcenter.widgets.charts import (
     BAR, LINE, PIE, BarChart, Chart, Chartist, LineChart, PieChart,
     SingleBarChart, SingleLineChart, SinglePieChart)
 from django.contrib.auth.models import User
+from django.core.exceptions import ImproperlyConfigured
 from . import TestCase
 
 
@@ -45,7 +46,10 @@ class BaseTest(TestCase):
         self.assertEqual(chart.legend, [])
         self.assertEqual(chart.labels, [])
         self.assertEqual(chart.series, [])
-        self.assertEqual(chart.values, [])
+
+        # Queryset and model are not defined
+        with self.assertRaises(ImproperlyConfigured):
+            self.assertEqual(chart.values, [])
 
     def test_chartmeta(self):
         class Chart0(Chart):
