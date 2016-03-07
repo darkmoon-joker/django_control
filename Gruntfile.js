@@ -26,19 +26,23 @@ module.exports = function(grunt) {
             }
         },
 
+        combine_mq: {
+            build: {
+                src: css_path + 'all.css',
+                dest: css_path + 'all.css'
+            }
+        },
+
         watch: {
             css: {
                 files: styl_path + '*.styl',
-                tasks: ['stylus:build'],
-                options: {
-                    debounceDelay: 500
-                }
+                tasks: ['stylus:build', 'combine_mq:build']
             }
         }
     });
 
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-stylus');
-    grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.registerTask('default', ['stylus']);
+    grunt.loadNpmTasks('grunt-combine-mq');
+    grunt.registerTask('default', ['stylus', 'combine_mq']);
 };
