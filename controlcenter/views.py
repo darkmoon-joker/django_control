@@ -24,8 +24,8 @@ class ControlCenter(object):
         if not self.dashboards:
             raise ImproperlyConfigured('No dashboard found in '
                                        'settings.CONTROLCENTER_DASHBOARDS.')
-
-        length = len(self.dashboards) - 1
+        # Limits number to 10
+        length = min([len(self.dashboards) - 1, 9])
         values = length and '[0-{}]'.format(length)
         urlpatterns = [
             url(r'^(?P<pk>{})/$'.format(values), dashboard_view,
