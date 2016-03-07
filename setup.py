@@ -1,16 +1,15 @@
 from setuptools import find_packages, setup
 
-VERSION = '0.1.0'
+VERSION = '0.1.1'
 EXCLUDE_FROM_PACKAGES = ['controlcenter.stylus',
                          'controlcenter.images']
 
 setup(
     name='django-controlcenter',
     version=VERSION,
-    description='Set of widgets to build dashboards for your project.',
+    description='Set of widgets to build dashboards for your Django-project.',
     long_description='',
-    url='',
-    download_url='',
+    url='https://github.com/byashimov/django-controlcenter',
     author='Murad Byashimov',
     author_email='byashimov@gmail.com',
     packages=find_packages(exclude=EXCLUDE_FROM_PACKAGES),
