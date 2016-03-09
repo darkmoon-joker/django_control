@@ -1,18 +1,18 @@
 chartist-colors(names, colors)
-    for name, i in names
+    for name, color in names
         .ct-series-{name}
             .ct-bar,
             .ct-line,
             .ct-point,
             .ct-slice-donut
-                stroke colors[i]
+                stroke colors[color]
 
             .ct-area,
             .ct-slice-pie
-                fill colors[i]
+                fill colors[color]
 
         .ct-legend-{name}
-            background colors[i]
+            background colors[color]
 
 
 size(w, h)
