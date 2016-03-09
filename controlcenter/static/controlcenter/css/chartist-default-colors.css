@@ -102,14 +102,14 @@
 .ct-legend-h {
   background: #6b0392;
 }
-.ct-series-8 .ct-bar,
-.ct-series-8 .ct-line,
-.ct-series-8 .ct-point,
-.ct-series-8 .ct-slice-donut {
+.ct-series-i .ct-bar,
+.ct-series-i .ct-line,
+.ct-series-i .ct-point,
+.ct-series-i .ct-slice-donut {
   stroke: #f05b4f;
 }
-.ct-series-8 .ct-area,
-.ct-series-8 .ct-slice-pie {
+.ct-series-i .ct-area,
+.ct-series-i .ct-slice-pie {
   fill: #f05b4f;
 }
 .ct-legend-8 {
