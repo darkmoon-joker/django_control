@@ -48,8 +48,15 @@ class BaseWidgetTest(TestCase):
         with self.assertRaises(AssertionError):
             self.widget0.get_template_name()
 
+        # Simple test
         self.widget0.template_name_prefix = 'prefix'
         self.widget0.template_name = 'test.html'
+        self.assertEqual(self.widget0.get_template_name(),
+                         'prefix/test.html')
+
+        # Slash test
+        self.widget0.template_name_prefix = 'prefix/////'
+        self.widget0.template_name = '//test.html'
         self.assertEqual(self.widget0.get_template_name(),
                          'prefix/test.html')
 
