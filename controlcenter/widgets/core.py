@@ -1,5 +1,6 @@
 # coding: utf-8
 
+import os
 import collections
 import itertools
 
@@ -60,7 +61,8 @@ class BaseWidget(six.with_metaclass(WidgetMeta, BaseModel)):
     def get_template_name(self):
         assert self.template_name, (
             '{}.template_name is not defined.'.format(self))
-        return '/'.join((self.template_name_prefix, self.template_name))
+        return os.path.join(self.template_name_prefix.rstrip(os.sep),
+                            self.template_name.lstrip(os.sep))
 
     def get_queryset(self):
         # Copied from django.views.generic.detail
