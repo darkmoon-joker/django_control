@@ -13,6 +13,7 @@ Django-admin_ is a great tool to control your project activity: new orders, comm
 
 With django-controlcenter you can have all your models on one single page and build beautiful charts with Chartist.js_. Actually they don't even have to be a django model, get your data from wherever you want: RDBMS, NOSQL, text file or even from an external web-page, it doesn't matter.
 
+
 Quickstart
 ----------
 
@@ -68,6 +69,11 @@ Plug in urls:
 
 Open ``/admin/dashboard/0/`` in browser.
 
+Documentation
+-------------
+
+Check out docs_ for more complete examples.
+
 Compatability
 -------------
 
@@ -82,3 +88,4 @@ This project uses Chartist.js_, Masonry.js_ and Sortable.js_.
 .. _Masonry.js:  http://masonry.desandro.com/
 .. _Sortable.js: http://github.hubspot.com/sortable/docs/welcome/
 .. _Django-admin: https://docs.djangoproject.com/en/stable/ref/contrib/admin/
+.. _docs: https://readthedocs.org/projects/django-controlcenter/
