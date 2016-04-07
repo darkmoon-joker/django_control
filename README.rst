@@ -77,6 +77,14 @@ Check out docs_ for more complete examples.
 Compatability
 -------------
 
+.. image:: https://travis-ci.org/byashimov/django-controlcenter.svg?branch=master
+    :alt: Build Status
+    :target: https://travis-ci.org/byashimov/django-controlcenter
+
+.. image:: https://codecov.io/github/byashimov/django-controlcenter/coverage.svg?branch=master
+    :alt: Codecov
+    :target: https://codecov.io/github/byashimov/django-controlcenter?branch=master
+
 Tested on py 2.7, 3.4, 3.5 with django 1.8, 1.9.
 
 Credits
