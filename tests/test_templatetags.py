@@ -8,7 +8,9 @@ from controlcenter.templatetags.controlcenter_tags import (
 from django import VERSION
 from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
+
 from test_models import TestUser0, TestUser1
+
 from . import TestCase
 
 

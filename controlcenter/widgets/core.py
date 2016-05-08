@@ -1,8 +1,8 @@
 # coding: utf-8
 
-import os
 import collections
 import itertools
+import os
 
 from django.core.exceptions import ImproperlyConfigured
 from django.utils import six

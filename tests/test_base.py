@@ -1,6 +1,7 @@
 # coding: utf-8
 
 from controlcenter.base import BaseModel
+
 from . import TestCase
 
 

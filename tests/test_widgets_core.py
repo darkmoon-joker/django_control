@@ -8,6 +8,7 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ImproperlyConfigured
 from django.db.models.query import QuerySet
 from django.utils import six
+
 from . import TestCase
 
 

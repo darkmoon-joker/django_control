@@ -3,6 +3,7 @@ from controlcenter.widgets.charts import (
     SingleBarChart, SingleLineChart, SinglePieChart)
 from django.contrib.auth.models import User
 from django.core.exceptions import ImproperlyConfigured
+
 from . import TestCase
 
 

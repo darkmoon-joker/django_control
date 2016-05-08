@@ -2,6 +2,7 @@ import collections
 
 from controlcenter.utils import captitle, deepmerge, indexonly
 from django.contrib.auth.models import User
+
 from . import TestCase
 
 
