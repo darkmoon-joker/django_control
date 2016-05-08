@@ -6,6 +6,7 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.contrib.admin.views.decorators import staff_member_required
 from django.core.exceptions import ImproperlyConfigured
+from django.http import Http404
 from django.utils.decorators import method_decorator
 from django.views.generic.base import TemplateView
 
@@ -24,12 +25,8 @@ class ControlCenter(object):
         if not self.dashboards:
             raise ImproperlyConfigured('No dashboard found in '
                                        'settings.CONTROLCENTER_DASHBOARDS.')
-        # Limits number to 10
-        length = min([len(self.dashboards) - 1, 9])
-        values = length and '[0-{}]'.format(length)
         urlpatterns = [
-            url(r'^(?P<pk>{})/$'.format(values), dashboard_view,
-                name='dashboard'),
+            url(r'^(?P<pk>\d+)/$', dashboard_view, name='dashboard'),
         ]
         return urlpatterns
 
@@ -49,8 +46,11 @@ class DashboardView(TemplateView):
         return super(DashboardView, self).dispatch(*args, **kwargs)
 
     def get(self, request, *args, **kwargs):
-        pk = int(self.kwargs.get('pk'))
-        self.dashboard = controlcenter.dashboards[pk]
+        pk = int(self.kwargs['pk'])
+        try:
+            self.dashboard = controlcenter.dashboards[pk]
+        except IndexError:
+            raise Http404('Dashboard not found.')
         return super(DashboardView, self).get(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
