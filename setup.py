@@ -1,6 +1,6 @@
 from setuptools import find_packages, setup
 
-VERSION = '0.1.1'
+VERSION = '0.1.2'
 EXCLUDE_FROM_PACKAGES = ['controlcenter.stylus',
                          'controlcenter.images']
 
