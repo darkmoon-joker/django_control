@@ -15,6 +15,7 @@ setup(
     packages=find_packages(exclude=EXCLUDE_FROM_PACKAGES),
     include_package_data=True,
     license='BSD',
+    install_requires=['django-pkgconf'],
     classifiers=[
         'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
