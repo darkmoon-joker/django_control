@@ -6,6 +6,7 @@ Get all your project models on one single page with charts and whistles.
 .. image:: https://cloud.githubusercontent.com/assets/1560043/14309295/b8c9aad0-fc05-11e5-96d0-44293d2d07ff.png
     :alt: django-controlcenter
 
+
 Rationale
 ---------
 
@@ -23,7 +24,7 @@ Install django-controlcenter:
 
     pip install -U django-controlcenter
 
-Create a dashboard file with up to 10 dashboards and unlimited number of widgets:
+Create a dashboard file with unlimited number of widgets and dashboards:
 
 .. code-block:: python
 
@@ -69,10 +70,12 @@ Plug in urls:
 
 Open ``/admin/dashboard/0/`` in browser.
 
+
 Documentation
 -------------
 
 Check out docs_ for more complete examples.
+
 
 Compatability
 -------------
@@ -87,13 +90,39 @@ Compatability
 
 Tested on py 2.7, 3.4, 3.5 with django 1.8, 1.9.
 
+
 Credits
 -------
 
 This project uses Chartist.js_, Masonry.js_ and Sortable.js_.
 
+
+Changelog
+---------
+
+Only worthy changes are listed in here.
+
+0.2.0
+~~~~~
+- Unlimited dashboard support.
+- Configuration constructor is moved to a separate project -- django-pkgconf_. It's a dependency now.
+
+0.1.2
+~~~~~
+- Chart ``i`` series color fix. Thanks to @uncleNight.
+- Docs. Finally.
+
+0.1.1
+~~~~~
+- Better responsive experience.
+
+0.1.0
+~~~~~
+- First public release.
+
 .. _Chartist.js: http://gionkunz.github.io/chartist-js/
 .. _Masonry.js:  http://masonry.desandro.com/
 .. _Sortable.js: http://github.hubspot.com/sortable/docs/welcome/
 .. _Django-admin: https://docs.djangoproject.com/en/stable/ref/contrib/admin/
+.. _django-pkgconf: https://github.com/byashimov/django-pkgconf
 .. _docs: https://readthedocs.org/projects/django-controlcenter/

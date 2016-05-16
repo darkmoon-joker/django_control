@@ -1,20 +1,19 @@
 from setuptools import find_packages, setup
 
-VERSION = '0.1.2'
-EXCLUDE_FROM_PACKAGES = ['controlcenter.stylus',
-                         'controlcenter.images']
-
 setup(
     name='django-controlcenter',
-    version=VERSION,
+    version='0.2.0',
     description='Set of widgets to build dashboards for your Django-project.',
     long_description='',
     url='https://github.com/byashimov/django-controlcenter',
     author='Murad Byashimov',
     author_email='byashimov@gmail.com',
-    packages=find_packages(exclude=EXCLUDE_FROM_PACKAGES),
+    packages=find_packages(
+        exclude=['controlcenter.stylus', 'controlcenter.images']),
     include_package_data=True,
     license='BSD',
+    install_requires=['django-pkgconf'],
+    keywords='django admin dashboard',
     classifiers=[
         'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',

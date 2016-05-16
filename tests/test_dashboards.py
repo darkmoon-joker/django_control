@@ -3,8 +3,9 @@
 from controlcenter import widgets
 from django.contrib.auth.models import User
 from django.core.exceptions import ImproperlyConfigured
-from django.core.urlresolvers import NoReverseMatch, reverse
+from django.core.urlresolvers import reverse
 from django.test.utils import override_settings
+
 from . import TestCase
 
 
@@ -37,30 +38,31 @@ class B_DashboardTest(TestCase):
         ROOT_URLCONF='urls',
         CONTROLCENTER_DASHBOARDS=('dashboards.EmptyDashboard',))
     def test_empty_dashboard(self):
-        url = reverse('controlcenter:dashboard', kwargs={'pk': 0})
         self.client.login(username='superuser', password='superpassword')
-        response = self.client.get(url)
-        self.assertEqual(response.status_code, 200)
 
-        # Can't test this, because @override_settings doesn't work here
-        # Regex check. (?P<pk>0) for one and (?P<pk>[0-X]) for multiple
-        # Checks for pk=1 with the only dashboard
-        with self.assertRaises(NoReverseMatch):
-            # I wish I could cache urls, but reverse_lazy fails with py34 & 1.8
-            # https://code.djangoproject.com/ticket/25424
-            reverse('controlcenter:dashboard', kwargs={'pk': 1})
+        # I wish I could cache urls, but reverse_lazy fails with py34 & 1.8
+        # https://code.djangoproject.com/ticket/25424
+        url_0 = reverse('controlcenter:dashboard', kwargs={'pk': 0})
+        response_0 = self.client.get(url_0)
 
-        dashboard = response.context['dashboard']
+        # Status code test
+        self.assertEqual(response_0.status_code, 200)
 
+        # Widgets test
         # It's empty, remember?
         # We don't check context, because `get_widgets` returns iterator
         # and it's empty now
-        response = self.client.get(url)
+        dashboard = response_0.context['dashboard']
         with self.assertRaises(StopIteration):
             next(dashboard.get_widgets(request=None))
 
         # Absolute url test
-        self.assertEqual(dashboard.get_absolute_url(), url)
+        self.assertEqual(dashboard.get_absolute_url(), url_0)
+
+        # Non-exists dashboard test
+        url_1 = reverse('controlcenter:dashboard', kwargs={'pk': 1})
+        response_1 = self.client.get(url_1)
+        self.assertEqual(response_1.status_code, 404)
 
     @override_settings(
         ROOT_URLCONF='test_urls',
@@ -85,3 +87,13 @@ class B_DashboardTest(TestCase):
         # It's not empty
         self.assertIsInstance(next(dashboard.get_widgets(request=None)),
                               widgets.Group)
+
+    def test_multiple_dashboards(self):
+        self.client.login(username='superuser', password='superpassword')
+        dashboards = ['dashboards.NonEmptyDashboard' for i in range(30)]
+        with self.settings(ROOT_URLCONF='test_urls',
+                           CONTROLCENTER_DASHBOARDS=dashboards):
+            for i, path in enumerate(dashboards):
+                url = reverse('controlcenter:dashboard', kwargs={'pk': i})
+                response = self.client.get(url)
+                self.assertEqual(response.status_code, 200)
