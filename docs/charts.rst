@@ -116,7 +116,7 @@ This widget will render a bar chart of top three players:
 
 .. code-block:: python
 
-    class MySingleBarChart(widgets.SimpleBarChart):
+    class MySingleBarChart(widgets.SingleBarChart):
         # label and series
         values_list = ('username', 'score')
         # Data source
