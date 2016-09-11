@@ -1,5 +1,3 @@
-# coding: utf-8
-
 from django.test.utils import override_settings
 
 from controlcenter import Dashboard, app_settings

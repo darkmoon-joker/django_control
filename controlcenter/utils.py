@@ -1,5 +1,3 @@
-# coding: utf-8
-
 import collections
 
 from django.utils.text import camel_case_to_spaces, capfirst

@@ -1,5 +1,3 @@
-# coding: utf-8
-
 from django.utils import six
 
 from ..utils import deepmerge

@@ -1,5 +1,3 @@
-# coding: utf-8
-
 import collections
 import json
 from functools import partial
