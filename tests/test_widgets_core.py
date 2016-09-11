@@ -2,12 +2,13 @@
 
 import itertools
 
-from controlcenter import widgets
-from controlcenter.widgets.core import BaseWidget, WidgetMeta
 from django.contrib.auth.models import User
 from django.core.exceptions import ImproperlyConfigured
 from django.db.models.query import QuerySet
 from django.utils import six
+
+from controlcenter import widgets
+from controlcenter.widgets.core import BaseWidget, WidgetMeta
 
 from . import TestCase
 

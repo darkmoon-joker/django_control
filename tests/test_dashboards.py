@@ -1,10 +1,11 @@
 # coding: utf-8
 
-from controlcenter import widgets
 from django.contrib.auth.models import User
 from django.core.exceptions import ImproperlyConfigured
 from django.core.urlresolvers import reverse
 from django.test.utils import override_settings
+
+from controlcenter import widgets
 
 from . import TestCase
 

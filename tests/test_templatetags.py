@@ -1,14 +1,21 @@
 import collections
 import json
 
-from controlcenter import app_settings, widgets
-from controlcenter.templatetags.controlcenter_tags import (
-    _method_prop, attrlabel, attrvalue, change_url, changelist_url,
-    is_sequence, jsonify, legend_color)
 from django import VERSION
 from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
 
+from controlcenter import app_settings, widgets
+from controlcenter.templatetags.controlcenter_tags import (
+    _method_prop,
+    attrlabel,
+    attrvalue,
+    change_url,
+    changelist_url,
+    is_sequence,
+    jsonify,
+    legend_color,
+)
 from test_models import TestUser0, TestUser1
 
 from . import TestCase

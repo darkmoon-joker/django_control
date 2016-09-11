@@ -1,8 +1,19 @@
-from controlcenter.widgets.charts import (
-    BAR, LINE, PIE, BarChart, Chart, Chartist, LineChart, PieChart,
-    SingleBarChart, SingleLineChart, SinglePieChart)
 from django.contrib.auth.models import User
 from django.core.exceptions import ImproperlyConfigured
+
+from controlcenter.widgets.charts import (
+    BAR,
+    LINE,
+    PIE,
+    BarChart,
+    Chart,
+    Chartist,
+    LineChart,
+    PieChart,
+    SingleBarChart,
+    SingleLineChart,
+    SinglePieChart,
+)
 
 from . import TestCase
 
