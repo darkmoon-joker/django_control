@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-#
 # django-controlcenter documentation build configuration file, created by
 # sphinx-quickstart on Mon Mar  7 19:08:51 2016.
 

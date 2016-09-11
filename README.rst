@@ -88,7 +88,7 @@ Compatability
     :alt: Codecov
     :target: https://codecov.io/github/byashimov/django-controlcenter?branch=master
 
-Tested on py 2.7, 3.4, 3.5 with django 1.8, 1.9.
+Tested on py 2.7, 3.4, 3.5 with django 1.8, 1.9, 1.10.
 
 
 Credits
@@ -102,9 +102,13 @@ Changelog
 
 Only worthy changes are listed in here.
 
+0.2.1
+~~~~~
+- Django 1.10 support. Tested in tox *only*.
+
 0.2.0
 ~~~~~
-- Unlimited dashboard support.
+- Unlimited dashboards support.
 - Configuration constructor is moved to a separate project -- django-pkgconf_. It's a dependency now.
 
 0.1.2
@@ -125,4 +129,4 @@ Only worthy changes are listed in here.
 .. _Sortable.js: http://github.hubspot.com/sortable/docs/welcome/
 .. _Django-admin: https://docs.djangoproject.com/en/stable/ref/contrib/admin/
 .. _django-pkgconf: https://github.com/byashimov/django-pkgconf
-.. _docs: https://readthedocs.org/projects/django-controlcenter/
+.. _docs: http://django-controlcenter.readthedocs.io/en/latest/
