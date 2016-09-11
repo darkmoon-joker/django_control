@@ -60,11 +60,11 @@ def change_url(widget, obj):
         if not isinstance(obj, models.Model):
             # Namedtuples and custom stuff
             meta = widget.model._meta
-        elif obj._deferred:
+        elif getattr(obj, '_deferred', False):
             # Deffered model
             meta = obj._meta.proxy_for_model._meta
         else:
-            # Regular model
+            # Regular model or django 1.10 deferred
             meta = obj._meta
 
     if pk is None:
