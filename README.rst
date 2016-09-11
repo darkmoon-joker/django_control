@@ -125,4 +125,4 @@ Only worthy changes are listed in here.
 .. _Sortable.js: http://github.hubspot.com/sortable/docs/welcome/
 .. _Django-admin: https://docs.djangoproject.com/en/stable/ref/contrib/admin/
 .. _django-pkgconf: https://github.com/byashimov/django-pkgconf
-.. _docs: https://readthedocs.org/projects/django-controlcenter/
+.. _docs: http://django-controlcenter.readthedocs.io/en/latest/
