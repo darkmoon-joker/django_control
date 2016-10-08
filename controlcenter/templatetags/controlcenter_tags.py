@@ -13,12 +13,14 @@ from django.utils.http import urlencode
 from .. import app_settings
 from ..utils import indexonly
 
+from django.core.serializers.json import DjangoJSONEncoder
+
 register = template.Library()
 
 
 @register.filter
 def jsonify(obj):
-    return mark_safe(json.dumps(obj))
+    return mark_safe(json.dumps(obj, cls=DjangoJSONEncoder))
 
 
 @register.filter
