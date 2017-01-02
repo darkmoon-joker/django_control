@@ -102,6 +102,10 @@ Changelog
 
 Only worthy changes are listed in here.
 
+0.2.2
+~~~~~
+- ``dashboard.html`` now extends ``admin/base_site.html`` instead of ``admin/base.html`` in order to display *branding* block
+
 0.2.1
 ~~~~~
 - Django 1.10 support. Tested in tox *only*.
