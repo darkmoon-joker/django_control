@@ -1,42 +1,43 @@
-from importlib import import_module
-
 from django.conf.urls import url
 from django.contrib import admin
 from django.contrib.admin.views.decorators import staff_member_required
 from django.core.exceptions import ImproperlyConfigured
 from django.http import Http404
 from django.utils.decorators import method_decorator
+from django.utils.module_loading import import_string
 from django.views.generic.base import TemplateView
 
 from . import app_settings
 
 
 class ControlCenter(object):
-    def get_urls(self):
-        self.dashboards = []
-        for index, path in enumerate(app_settings.DASHBOARDS):
-            pkg, name = path.rsplit('.', 1)
-            klass = getattr(import_module(pkg), name)
-            instance = klass(index)
-            self.dashboards.append(instance)
+    def __init__(self, view_class):
+        self.view_class = view_class
 
-        if not self.dashboards:
-            raise ImproperlyConfigured('No dashboard found in '
-                                       'settings.CONTROLCENTER_DASHBOARDS.')
+    def get_dashboards(self):
+        klasses = map(import_string, app_settings.DASHBOARDS)
+        dashboards = [klass(pk=pk) for pk, klass in enumerate(klasses)]
+        if not dashboards:
+            raise ImproperlyConfigured('No dashboards found.')
+        return dashboards
+
+    def get_view(self):
+        dashboards = self.get_dashboards()
+        return self.view_class.as_view(dashboards=dashboards)
+
+    def get_urls(self):
         urlpatterns = [
-            url(r'^(?P<pk>\d+)/$', dashboard_view, name='dashboard'),
+            url(r'^(?P<pk>\d+)/$', self.get_view(), name='dashboard'),
         ]
         return urlpatterns
 
     @property
     def urls(self):
-        # include(arg, namespace=None, app_name=None)
         return self.get_urls(), 'controlcenter', 'controlcenter'
-
-controlcenter = ControlCenter()
 
 
 class DashboardView(TemplateView):
+    dashboards = NotImplemented
     template_name = 'controlcenter/dashboard.html'
 
     @method_decorator(staff_member_required)
@@ -46,7 +47,7 @@ class DashboardView(TemplateView):
     def get(self, request, *args, **kwargs):
         pk = int(self.kwargs['pk'])
         try:
-            self.dashboard = controlcenter.dashboards[pk]
+            self.dashboard = self.dashboards[pk]
         except IndexError:
             raise Http404('Dashboard not found.')
         return super(DashboardView, self).get(request, *args, **kwargs)
@@ -55,7 +56,7 @@ class DashboardView(TemplateView):
         context = {
             'title': self.dashboard.title,
             'dashboard': self.dashboard,
-            'dashboards': controlcenter.dashboards,
+            'dashboards': self.dashboards,
             'groups': self.dashboard.get_widgets(self.request),
             'sharp': app_settings.SHARP,
         }
@@ -65,4 +66,5 @@ class DashboardView(TemplateView):
         kwargs.update(context)
         return super(DashboardView, self).get_context_data(**kwargs)
 
-dashboard_view = DashboardView.as_view()
+
+controlcenter = ControlCenter(view_class=DashboardView)
