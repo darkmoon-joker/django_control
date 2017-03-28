@@ -61,9 +61,18 @@
         @media (min-width $screem-md)
             // We don't need all this columns
             // but Marsony needs a real grid to calculate width
-            for i in range(1, cols)
-                &--w{i}
-                    width (100 / (cols / i))%
+            &--w1
+                width ((1 / 4) * 100)%
+            &--w2
+                width ((1 / 3) * 100)%
+            &--w3
+                width ((1 / 2) * 100)%
+            &--w4
+                width ((2 / 3) * 100)%
+            &--w5
+                width ((3 / 4) * 100)%
+            &--w6
+                width ((1 / 1) * 100)%
 
 
 .controlcenter__widget

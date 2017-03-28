@@ -303,7 +303,7 @@
 
 @media (min-width: 1000px) {
   .controlcenter__masonry__block--w1 {
-    width: 16.666666666666668%;
+    width: 25%;
   }
 
   .controlcenter__masonry__block--w2 {
@@ -319,7 +319,7 @@
   }
 
   .controlcenter__masonry__block--w5 {
-    width: 83.33333333333334%;
+    width: 75%;
   }
 
   .controlcenter__masonry__block--w6 {

@@ -10,9 +10,9 @@ Get all your project models on one single page with charts and whistles.
 Rationale
 ---------
 
-Django-admin_ is a great tool to control your project activity: new orders, comments, replies, users, feedback -- everything is here. The only struggle is to switch between all that pages constantly just to check them out for new entries.
+Django-admin_ is a great tool to control your project activity: new orders, comments, replies, users, feedback -- everything is here. The only struggle is to switch between all those pages constantly just to check them out for new entries.
 
-With django-controlcenter you can have all your models on one single page and build beautiful charts with Chartist.js_. Actually they don't even have to be a django model, get your data from wherever you want: RDBMS, NOSQL, text file or even from an external web-page, it doesn't matter.
+With django-controlcenter you can have all of your models on one single page and build beautiful charts with Chartist.js_. Actually they don't even have to be a django models, get your data from wherever you want: RDBMS, NOSQL, text file or even from an external web-page, it doesn't matter.
 
 
 Quickstart
@@ -74,10 +74,10 @@ Open ``/admin/dashboard/0/`` in browser.
 Documentation
 -------------
 
-Check out docs_ for more complete examples.
+Check out the docs_ for more complete examples.
 
 
-Compatability
+Compatibility
 -------------
 
 .. image:: https://travis-ci.org/byashimov/django-controlcenter.svg?branch=master
@@ -100,11 +100,22 @@ This project uses Chartist.js_, Masonry.js_ and Sortable.js_.
 Changelog
 ---------
 
-Only worthy changes are listed in here.
+0.2.3
+~~~~~
+- Updated column grid, thanks to @pauloxnet.
+- Grammar fixes, thanks to @danielquinn.
+- It's should be possible now to use a custom dashboard view with a custom template.
+
+0.2.2
+~~~~~
+- ``dashboard.html`` now extends ``admin/base_site.html`` instead of ``admin/base.html``
+  in order to display *branding* block. Thanks to @chadgh.
+- Updated ``jsonify`` tag filter, thanks to @k8n.
 
 0.2.1
 ~~~~~
 - Django 1.10 support. Tested in tox *only*.
+- Updated the SingleBarChart example, thanks to @greeve.
 
 0.2.0
 ~~~~~
