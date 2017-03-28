@@ -9,7 +9,7 @@ from django.utils.functional import cached_property
 from ..base import BaseModel
 
 __all__ = ['Group', 'ItemList', 'Widget', 'SMALL', 'MEDIUM', 'LARGE',
-           'LARGER', 'LARGEST']
+           'LARGER', 'LARGEST', 'FULL']
 
 
 # Actually we don't need all that sizes
@@ -20,7 +20,8 @@ SMALL = 1    # 25%  or  [x] + [x] + [x] + [x]
 MEDIUM = 2   # 33%  or  [ x ] + [ x ] + [ x ]
 LARGE = 3    # 50%  or  [   x   ] + [   x   ]
 LARGER = 4   # 66%  or  [     x     ] + [ x ]
-LARGEST = 6  # 100% or  [         x         ]
+LARGEST = 5  # 75%  or  [      x      ] + [x]
+FULL = 6     # 100% or  [         x         ]
 
 
 class WidgetMeta(type):
