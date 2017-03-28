@@ -8,18 +8,19 @@ from django.utils.functional import cached_property
 
 from ..base import BaseModel
 
-__all__ = ['Group', 'ItemList', 'Widget', 'MEDIUM', 'LARGE', 'LARGER',
-           'LARGEST']
+__all__ = ['Group', 'ItemList', 'Widget', 'SMALL', 'MEDIUM', 'LARGE',
+           'LARGER', 'LARGEST']
 
 
 # Actually we don't need all that sizes
 # but should have a grid for Marsony
 # so I'm going to leave the most helpfull ones
 
-MEDIUM = 2   # 33%  or  [x] + [x] + [x]
-LARGE = 3    # 50%  or  [  x ] + [ x  ]
-LARGER = 4   # 66%  or  [    x  ] + [x]
-LARGEST = 6  # 100% or  [      x      ]
+SMALL = 1    # 25%  or  [x] + [x] + [x] + [x]
+MEDIUM = 2   # 33%  or  [ x ] + [ x ] + [ x ]
+LARGE = 3    # 50%  or  [   x   ] + [   x   ]
+LARGER = 4   # 66%  or  [     x     ] + [ x ]
+LARGEST = 6  # 100% or  [         x         ]
 
 
 class WidgetMeta(type):
