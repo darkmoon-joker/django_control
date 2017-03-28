@@ -46,17 +46,19 @@ initial                              100%
 --------------------- -----------------------------------
 > 768px                      50%              100%
 --------------------- ----------------- -----------------
-> 1000px               16%   33%   50%   66%   83%  100%
+> 1000px               25%   33%   50%   66%   75%  100%
 ===================== ===== ===== ===== ===== ===== =====
 
 Most usefull sizes are available in ``widgets`` module:
 
 .. code-block:: python
 
+    SMALL = 1
     MEDIUM = 2
     LARGE = 3
     LARGER = 4
-    LARGEST = 6
+    LARGEST = 5
+    FULL = 6
 
 
 Media class
