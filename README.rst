@@ -77,7 +77,7 @@ Documentation
 Check out the docs_ for more complete examples.
 
 
-Compatability
+Compatibility
 -------------
 
 .. image:: https://travis-ci.org/byashimov/django-controlcenter.svg?branch=master
@@ -100,15 +100,22 @@ This project uses Chartist.js_, Masonry.js_ and Sortable.js_.
 Changelog
 ---------
 
-Only worthy changes are listed in here.
+0.2.3
+~~~~~
+- Updated column grid, thanks to @pauloxnet.
+- Grammar fixes, thanks to @danielquinn.
+- It's should be possible now to use a custom dashboard view with a custom template.
 
 0.2.2
 ~~~~~
-- ``dashboard.html`` now extends ``admin/base_site.html`` instead of ``admin/base.html`` in order to display *branding* block
+- ``dashboard.html`` now extends ``admin/base_site.html`` instead of ``admin/base.html``
+  in order to display *branding* block. Thanks to @chadgh.
+- Updated ``jsonify`` tag filter, thanks to @k8n.
 
 0.2.1
 ~~~~~
 - Django 1.10 support. Tested in tox *only*.
+- Updated the SingleBarChart example, thanks to @greeve.
 
 0.2.0
 ~~~~~
