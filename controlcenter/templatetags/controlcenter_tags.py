@@ -3,7 +3,10 @@ import json
 from functools import partial
 import django
 from django import template
-from django.core.urlresolvers import NoReverseMatch, reverse
+try:
+    from django.urls import NoReverseMatch, reverse
+except ImportError:
+    from django.core.urlresolvers import NoReverseMatch, reverse
 from django.db import models
 from django.db.models.base import ModelBase
 from django.utils import six
