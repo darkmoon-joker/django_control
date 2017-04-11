@@ -1,9 +1,12 @@
 import collections
 import json
 from functools import partial
-
+import django
 from django import template
-from django.core.urlresolvers import NoReverseMatch, reverse
+try:
+    from django.urls import NoReverseMatch, reverse
+except ImportError:
+    from django.core.urlresolvers import NoReverseMatch, reverse
 from django.db import models
 from django.db.models.base import ModelBase
 from django.utils import six
@@ -13,12 +16,20 @@ from django.utils.http import urlencode
 from .. import app_settings
 from ..utils import indexonly
 
+from django.core.serializers.json import DjangoJSONEncoder
+
 register = template.Library()
+
+if django.VERSION < (1, 9):
+    # Support older versions without implicit assignment support in simple_tag.
+    simple_tag = register.assignment_tag
+else:
+    simple_tag = register.simple_tag
 
 
 @register.filter
 def jsonify(obj):
-    return mark_safe(json.dumps(obj))
+    return mark_safe(json.dumps(obj, cls=DjangoJSONEncoder))
 
 
 @register.filter
@@ -35,9 +46,8 @@ def is_sequence(obj):
     return isinstance(obj, collections.Sequence)
 
 
-@register.assignment_tag
+@simple_tag
 def change_url(widget, obj):
-    # Todo: replace for django 1.9 with simple tag
 
     if not widget.model and not isinstance(obj, models.Model):
         # No chance to get model url
@@ -167,6 +177,7 @@ def _method_prop(obj, attrname, attrprop):
     attr = getattr(obj, attrname, None)
     if attr and callable(attr):
         return getattr(attr, attrprop, None)
+
 
 _method_label = partial(_method_prop, attrprop='short_description')
 
