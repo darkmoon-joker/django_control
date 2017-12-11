@@ -4,6 +4,7 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.core.exceptions import ImproperlyConfigured
 from django.http import Http404
 from django.utils.decorators import method_decorator
+from django.utils.functional import cached_property
 from django.utils.module_loading import import_string
 from django.views.generic.base import TemplateView
 
@@ -22,8 +23,7 @@ class ControlCenter(object):
         return dashboards
 
     def get_view(self):
-        dashboards = self.get_dashboards()
-        return self.view_class.as_view(dashboards=dashboards)
+        return self.view_class.as_view(controlcenter=self)
 
     def get_urls(self):
         urlpatterns = [
@@ -37,7 +37,7 @@ class ControlCenter(object):
 
 
 class DashboardView(TemplateView):
-    dashboards = NotImplemented
+    controlcenter = NotImplemented
     template_name = 'controlcenter/dashboard.html'
 
     @method_decorator(staff_member_required)
@@ -51,6 +51,10 @@ class DashboardView(TemplateView):
         except IndexError:
             raise Http404('Dashboard not found.')
         return super(DashboardView, self).get(request, *args, **kwargs)
+
+    @cached_property
+    def dashboards(self):
+        return self.controlcenter.get_dashboards()
 
     def get_context_data(self, **kwargs):
         context = {
