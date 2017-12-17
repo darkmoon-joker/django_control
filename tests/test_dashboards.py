@@ -68,7 +68,6 @@ class B_DashboardTest(TestCase):
         self.assertEqual(response_1.status_code, 404)
 
     @override_settings(
-        ROOT_URLCONF='test_urls',
         CONTROLCENTER_DASHBOARDS=('dashboards.EmptyDashboard',
                                   'dashboards.NonEmptyDashboard'))
     def test_regular_dashboard(self):
@@ -94,8 +93,7 @@ class B_DashboardTest(TestCase):
     def test_multiple_dashboards(self):
         self.client.login(username='superuser', password='superpassword')
         dashboards = ['dashboards.NonEmptyDashboard' for i in range(30)]
-        with self.settings(ROOT_URLCONF='test_urls',
-                           CONTROLCENTER_DASHBOARDS=dashboards):
+        with self.settings(CONTROLCENTER_DASHBOARDS=dashboards):
             for i, path in enumerate(dashboards):
                 url = reverse('controlcenter:dashboard', kwargs={'pk': i})
                 response = self.client.get(url)

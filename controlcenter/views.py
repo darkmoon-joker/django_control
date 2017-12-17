@@ -1,4 +1,7 @@
-from django.conf.urls import url
+try:
+    from django.urls import re_conf as url
+except ImportError:
+    from django.conf.urls import url
 from django.contrib import admin
 from django.contrib.admin.views.decorators import staff_member_required
 from django.core.exceptions import ImproperlyConfigured
