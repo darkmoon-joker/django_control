@@ -63,8 +63,8 @@ Plug in urls:
     from controlcenter.views import controlcenter
 
     urlpatterns = [
-        path(r'admin/', admin.site.urls),
-        path(r'admin/dashboard/', controlcenter.urls),
+        path('admin/', admin.site.urls),
+        path('admin/dashboard/', controlcenter.urls),
         ...
     ]
 
@@ -104,7 +104,7 @@ Changelog
 ~~~~~
 
 - It's compatible with django 1.1—2.1 now
-- Custom app name can be passed to ControlCenter class
+- Custom app name can be passed to `ControlCenter` class
 
 0.2.3
 ~~~~~
