@@ -1,7 +1,7 @@
 try:
-    from django.urls import re_conf as url
+    from django.urls import re_conf
 except ImportError:
-    from django.conf.urls import url
+    from django.conf.urls import url as re_conf
 from django.contrib import admin
 from django.contrib.admin.views.decorators import staff_member_required
 from django.core.exceptions import ImproperlyConfigured
@@ -31,7 +31,7 @@ class ControlCenter(object):
 
     def get_urls(self):
         urlpatterns = [
-            url(r'^(?P<pk>\d+)/$', self.get_view(), name='dashboard'),
+            re_conf(r'^(?P<pk>\d+)/$', self.get_view(), name='dashboard'),
         ]
         return urlpatterns
 
