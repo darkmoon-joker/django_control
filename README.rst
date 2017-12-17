@@ -88,7 +88,7 @@ Compatibility
     :alt: Codecov
     :target: https://codecov.io/github/byashimov/django-controlcenter?branch=master
 
-Tested on py 2.7, 3.4, 3.5 with django 1.8—2.1.
+Tested on py 2.7, 3.4, 3.5, 3.6 with django 1.8—2.1.
 
 
 Credits
