@@ -88,7 +88,7 @@ Compatibility
     :alt: Codecov
     :target: https://codecov.io/github/byashimov/django-controlcenter?branch=master
 
-Tested on py 2.7, 3.4, 3.5 with django 1.8, 1.9, 1.10.
+Tested on py 2.7, 3.4, 3.5 with django 1.8—2.1.
 
 
 Credits
@@ -103,7 +103,7 @@ Changelog
 0.2.4
 ~~~~~
 
-- It's compatible with django 1.1—2.1 now
+- It's compatible with django 1.10—2.1 now
 - Custom app name can be passed to `ControlCenter` class
 
 0.2.3
