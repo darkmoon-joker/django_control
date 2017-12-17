@@ -15,7 +15,8 @@ from . import app_settings
 
 
 class ControlCenter(object):
-    def __init__(self, view_class):
+    def __init__(self, name, view_class):
+        self.name = name
         self.view_class = view_class
 
     def get_dashboards(self):
@@ -36,7 +37,7 @@ class ControlCenter(object):
 
     @property
     def urls(self):
-        return self.get_urls(), 'controlcenter', 'controlcenter'
+        return self.get_urls(), 'controlcenter', self.name
 
 
 class DashboardView(TemplateView):
@@ -74,4 +75,4 @@ class DashboardView(TemplateView):
         return super(DashboardView, self).get_context_data(**kwargs)
 
 
-controlcenter = ControlCenter(view_class=DashboardView)
+controlcenter = ControlCenter('controlcenter', DashboardView)
