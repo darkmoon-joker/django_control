@@ -1,9 +1,13 @@
-from django.conf.urls import url
+try:
+    from django.urls import re_conf
+except ImportError:
+    from django.conf.urls import url as re_conf
 from django.contrib import admin
 from django.contrib.admin.views.decorators import staff_member_required
 from django.core.exceptions import ImproperlyConfigured
 from django.http import Http404
 from django.utils.decorators import method_decorator
+from django.utils.functional import cached_property
 from django.utils.module_loading import import_string
 from django.views.generic.base import TemplateView
 
@@ -11,7 +15,8 @@ from . import app_settings
 
 
 class ControlCenter(object):
-    def __init__(self, view_class):
+    def __init__(self, name, view_class):
+        self.name = name
         self.view_class = view_class
 
     def get_dashboards(self):
@@ -22,22 +27,21 @@ class ControlCenter(object):
         return dashboards
 
     def get_view(self):
-        dashboards = self.get_dashboards()
-        return self.view_class.as_view(dashboards=dashboards)
+        return self.view_class.as_view(controlcenter=self)
 
     def get_urls(self):
         urlpatterns = [
-            url(r'^(?P<pk>\d+)/$', self.get_view(), name='dashboard'),
+            re_conf(r'^(?P<pk>\d+)/$', self.get_view(), name='dashboard'),
         ]
         return urlpatterns
 
     @property
     def urls(self):
-        return self.get_urls(), 'controlcenter', 'controlcenter'
+        return self.get_urls(), 'controlcenter', self.name
 
 
 class DashboardView(TemplateView):
-    dashboards = NotImplemented
+    controlcenter = NotImplemented
     template_name = 'controlcenter/dashboard.html'
 
     @method_decorator(staff_member_required)
@@ -51,6 +55,10 @@ class DashboardView(TemplateView):
         except IndexError:
             raise Http404('Dashboard not found.')
         return super(DashboardView, self).get(request, *args, **kwargs)
+
+    @cached_property
+    def dashboards(self):
+        return self.controlcenter.get_dashboards()
 
     def get_context_data(self, **kwargs):
         context = {
@@ -67,4 +75,4 @@ class DashboardView(TemplateView):
         return super(DashboardView, self).get_context_data(**kwargs)
 
 
-controlcenter = ControlCenter(view_class=DashboardView)
+controlcenter = ControlCenter('controlcenter', DashboardView)

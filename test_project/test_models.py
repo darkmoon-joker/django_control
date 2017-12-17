@@ -2,8 +2,8 @@ from django.db import models
 
 
 class TestUser0(models.Model):
-    username = models.CharField()
-    test_field = models.CharField('My title')
+    username = models.CharField(max_length=255)
+    test_field = models.CharField('My title', max_length=255)
 
     class Meta:
         app_label = 'controlcenter'
@@ -26,7 +26,7 @@ class TestUser0(models.Model):
 
 class TestUser1(models.Model):
     primary = models.AutoField(primary_key=True)
-    username = models.CharField()
+    username = models.CharField(max_length=255)
 
     class Meta:
         app_label = 'controlcenter'

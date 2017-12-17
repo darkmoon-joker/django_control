@@ -58,13 +58,13 @@ Plug in urls:
 
 .. code-block:: python
 
-    from django.conf.urls import url
+    from django.urls import path
     from django.contrib import admin
     from controlcenter.views import controlcenter
 
     urlpatterns = [
-        url(r'^admin/', admin.site.urls),
-        url(r'^admin/dashboard/', controlcenter.urls),
+        path(r'admin/', admin.site.urls),
+        path(r'admin/dashboard/', controlcenter.urls),
         ...
     ]
 
@@ -99,6 +99,12 @@ This project uses Chartist.js_, Masonry.js_ and Sortable.js_.
 
 Changelog
 ---------
+
+0.2.4
+~~~~~
+
+- It's compatible with django 1.1—2.1 now
+- Custom app name can be passed to ControlCenter class
 
 0.2.3
 ~~~~~
