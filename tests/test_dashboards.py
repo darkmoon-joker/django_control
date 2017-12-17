@@ -1,7 +1,11 @@
 from django.contrib.auth.models import User
 from django.core.exceptions import ImproperlyConfigured
-from django.core.urlresolvers import reverse
 from django.test.utils import override_settings
+
+try:
+    from django.urls import reverse
+except ImportError:
+    from django.core.urlresolvers import reverse
 
 from controlcenter import widgets
 
