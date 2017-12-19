@@ -1,7 +1,7 @@
 Dashboards
 ==========
 
-Django-controlcenter supports unlimited number of dashboards. You can access them by passing those position in ``settings.CONTROLCENTER_DASHBOARDS`` to url: ``/admin/dashboards/<position>/``.
+Django-controlcenter supports unlimited number of dashboards. You can access them by passing those slugs in ``settings.CONTROLCENTER_DASHBOARDS`` to url: ``/admin/dashboards/<slugs>/``.
 
 
 Dashboard options

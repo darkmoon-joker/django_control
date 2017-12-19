@@ -51,7 +51,7 @@ Update settings file:
     ]
 
     CONTROLCENTER_DASHBOARDS = (
-        'project.dashboards.MyDashboard',
+        ('mydash', 'project.dashboards.MyDashboard'),
     )
 
 Plug in urls:
@@ -68,7 +68,7 @@ Plug in urls:
         ...
     ]
 
-Open ``/admin/dashboard/0/`` in browser.
+Open ``/admin/dashboard/mydash/`` in browser.
 
 
 Documentation
@@ -88,7 +88,7 @@ Compatibility
     :alt: Codecov
     :target: https://codecov.io/github/byashimov/django-controlcenter?branch=master
 
-Tested on py 2.7, 3.4, 3.5 with django 1.8—2.1.
+Tested on py 2.7, 3.4, 3.5, 3.6 with django 1.8—2.1.
 
 
 Credits
@@ -100,11 +100,17 @@ This project uses Chartist.js_, Masonry.js_ and Sortable.js_.
 Changelog
 ---------
 
+0.2.5
+~~~~~
+
+- It's now possible to use slugs for dashboards instead of those indexes in ``CONTROLCENTER_DASHBOARDS``.
+  The old behaviour is supported too.
+
 0.2.4
 ~~~~~
 
-- It's compatible with django 1.10—2.1 now
-- Custom app name can be passed to `ControlCenter` class
+- It's compatible with django 1.8—2.1 now
+- Custom app name can be passed to ``ControlCenter`` class
 
 0.2.3
 ~~~~~
