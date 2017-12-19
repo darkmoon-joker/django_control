@@ -39,13 +39,13 @@ class B_DashboardTest(TestCase):
 
     @override_settings(
         ROOT_URLCONF='urls',
-        CONTROLCENTER_DASHBOARDS=('dashboards.EmptyDashboard',))
+        CONTROLCENTER_DASHBOARDS=[('empty', 'dashboards.EmptyDashboard')])
     def test_empty_dashboard(self):
         self.client.login(username='superuser', password='superpassword')
 
         # I wish I could cache urls, but reverse_lazy fails with py34 & 1.8
         # https://code.djangoproject.com/ticket/25424
-        url_0 = reverse('controlcenter:dashboard', kwargs={'pk': 0})
+        url_0 = reverse('controlcenter:dashboard', kwargs={'pk': 'empty'})
         response_0 = self.client.get(url_0)
 
         # Status code test

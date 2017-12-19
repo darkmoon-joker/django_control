@@ -10,8 +10,8 @@ master_doc = 'index'
 project = 'django-controlcenter'
 copyright = ('{}, Django-controlcenter developers and contributors'
              .format(datetime.date.today().year))
-version = '0.2.4'
-release = '0.2.4'
+version = '0.2.5'
+release = '0.2.5'
 exclude_patterns = ['_build']
 pygments_style = 'sphinx'
 html_theme = 'default'
