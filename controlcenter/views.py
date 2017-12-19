@@ -1,3 +1,5 @@
+from collections import OrderedDict
+
 try:
     from django.urls import re_conf
 except ImportError:
@@ -19,19 +21,12 @@ class ControlCenter(object):
         self.name = name
         self.view_class = view_class
 
-    def get_dashboards(self):
-        klasses = map(import_string, app_settings.DASHBOARDS)
-        dashboards = [klass(pk=pk) for pk, klass in enumerate(klasses)]
-        if not dashboards:
-            raise ImproperlyConfigured('No dashboards found.')
-        return dashboards
-
     def get_view(self):
         return self.view_class.as_view(controlcenter=self)
 
     def get_urls(self):
         urlpatterns = [
-            re_conf(r'^(?P<pk>\d+)/$', self.get_view(), name='dashboard'),
+            re_conf(r'^(?P<pk>\w+)/$', self.get_view(), name='dashboard'),
         ]
         return urlpatterns
 
@@ -41,7 +36,8 @@ class ControlCenter(object):
 
 
 class DashboardView(TemplateView):
-    controlcenter = NotImplemented
+    dashboard = None
+    controlcenter = None
     template_name = 'controlcenter/dashboard.html'
 
     @method_decorator(staff_member_required)
@@ -49,16 +45,26 @@ class DashboardView(TemplateView):
         return super(DashboardView, self).dispatch(*args, **kwargs)
 
     def get(self, request, *args, **kwargs):
-        pk = int(self.kwargs['pk'])
+        pk = str(self.kwargs['pk'])
         try:
             self.dashboard = self.dashboards[pk]
-        except IndexError:
+        except KeyError:
             raise Http404('Dashboard not found.')
         return super(DashboardView, self).get(request, *args, **kwargs)
 
     @cached_property
     def dashboards(self):
-        return self.controlcenter.get_dashboards()
+        dashboards = OrderedDict()
+        for slug, path in enumerate(app_settings.DASHBOARDS):
+            if isinstance(path, (list, tuple)):
+                slug, path = path
+            pk = str(slug)
+            klass = import_string(path)
+            dashboards[pk] = klass(pk=pk)
+
+        if not dashboards:
+            raise ImproperlyConfigured('No dashboards found.')
+        return dashboards
 
     def get_context_data(self, **kwargs):
         context = {
