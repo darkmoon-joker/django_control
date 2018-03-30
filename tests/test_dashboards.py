@@ -111,10 +111,14 @@ class B_DashboardTest(TestCase):
             self.assertEqual(response.status_code, 200)
             expected = (
                 '<div class="controlcenter__nav__item '
-                'controlcenter__nav__item--active">Non empty dashboard</div>'
+                'controlcenter__nav__item--active">Non empty dashboard</div>',
                 '<a class="controlcenter__nav__item" '
-                'href="/admin/dashboard/bar/">Non empty dashboard</a>'
+                'href="/admin/dashboard/bar/">Non empty dashboard</a>',
                 '<a class="controlcenter__nav__item" '
-                'href="/admin/dashboard/baz/">Non empty dashboard</a>'
+                'href="/admin/dashboard/baz/">Non empty dashboard</a>',
             )
-            self.assertInHTML(expected, response.content.decode())
+
+            content = response.content.decode()
+            for chunk in expected:
+                # fixme: use subtest someday
+                self.assertInHTML(chunk, content)
