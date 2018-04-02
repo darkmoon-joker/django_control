@@ -98,3 +98,27 @@ class B_DashboardTest(TestCase):
                 url = reverse('controlcenter:dashboard', kwargs={'pk': i})
                 response = self.client.get(url)
                 self.assertEqual(response.status_code, 200)
+
+    def test_navigation_links(self):
+        self.client.login(username='superuser', password='superpassword')
+        dashboards = (
+            ('foo', 'dashboards.NonEmptyDashboard'),
+            ('bar', 'dashboards.NonEmptyDashboard'),
+            ('baz', 'dashboards.NonEmptyDashboard'),
+        )
+        with self.settings(CONTROLCENTER_DASHBOARDS=dashboards):
+            response = self.client.get('/admin/dashboard/foo/')
+            self.assertEqual(response.status_code, 200)
+            expected = (
+                '<div class="controlcenter__nav__item '
+                'controlcenter__nav__item--active">Non empty dashboard</div>',
+                '<a class="controlcenter__nav__item" '
+                'href="/admin/dashboard/bar/">Non empty dashboard</a>',
+                '<a class="controlcenter__nav__item" '
+                'href="/admin/dashboard/baz/">Non empty dashboard</a>',
+            )
+
+            content = response.content.decode()
+            for chunk in expected:
+                # fixme: use subtest someday
+                self.assertInHTML(chunk, content)
