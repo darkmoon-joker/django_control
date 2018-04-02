@@ -70,7 +70,7 @@ class DashboardView(TemplateView):
         context = {
             'title': self.dashboard.title,
             'dashboard': self.dashboard,
-            'dashboards': self.dashboards,
+            'dashboards': self.dashboards.values(),
             'groups': self.dashboard.get_widgets(self.request),
             'sharp': app_settings.SHARP,
         }
