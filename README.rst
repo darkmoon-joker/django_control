@@ -100,6 +100,11 @@ This project uses Chartist.js_, Masonry.js_ and Sortable.js_.
 Changelog
 ---------
 
+0.2.6
+~~~~~
+
+- Fixed navigation menu links, thanks to @editorgit
+
 0.2.5
 ~~~~~
 
