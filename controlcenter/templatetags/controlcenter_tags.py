@@ -205,3 +205,15 @@ def attrlabel(widget, attrname):
         except models.FieldDoesNotExist:
             pass
     return attrname
+
+
+@register.simple_tag
+def external_link(url, label=None):
+    label = label or url
+    attrs = ' '.join([
+        'href="{}"'.format(url),
+        'target="_blank"',
+        'rel="noreferrer"',
+        'rel="noopener"',
+    ])
+    return mark_safe('<a {}>{}</a>'.format(attrs, label))
