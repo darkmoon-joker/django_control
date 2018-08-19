@@ -209,11 +209,8 @@ def attrlabel(widget, attrname):
 
 @register.simple_tag
 def external_link(url, label=None):
-    label = label or url
-    attrs = ' '.join([
-        'href="{}"'.format(url),
-        'target="_blank"',
-        'rel="noreferrer"',
-        'rel="noopener"',
-    ])
-    return mark_safe('<a {}>{}</a>'.format(attrs, label))
+    return mark_safe(
+        '<a href="{href}" target="_blank" '
+        'rel="noreferrer" rel="noopener">{label}</a>'
+        .format(href=url, label=label or url)
+    )

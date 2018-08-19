@@ -1,5 +1,6 @@
 import collections
 import json
+import re
 
 from django import VERSION
 from django.contrib.auth.models import User
@@ -12,6 +13,7 @@ from controlcenter.templatetags.controlcenter_tags import (
     attrvalue,
     change_url,
     changelist_url,
+    external_link,
     is_sequence,
     jsonify,
     legend_color,
@@ -349,3 +351,23 @@ class ChangeurlTest(TestCase):
             queryset = model.objects.values_list('email')
 
         self.equal(NoPkList, None)
+
+
+class ExternalLinkTest(TestCase):
+
+    def parse_href(self, text):
+        return re.search(r'href="([^"]*)"', text).groups()[0]
+
+    def parse_label(self, text):
+        return re.search(r'<a .*>(.*)</a>', text).groups()[0]
+
+    def test_no_label(self):
+        url = 'http://example.com'
+        html_link = external_link(url)
+        self.assertEqual(self.parse_href(html_link), url)
+        self.assertEqual(self.parse_label(html_link), url)
+
+    def test_with_label(self):
+        html_link = external_link('http://example.com', 'my-example-link')
+        self.assertEqual(self.parse_href(html_link), 'http://example.com')
+        self.assertEqual(self.parse_label(html_link), 'my-example-link')
