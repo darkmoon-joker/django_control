@@ -3,7 +3,7 @@ Generic widgets for `django-controlcenter` dashboards that don't require model d
 """
 from __future__ import (absolute_import, division, print_function, unicode_literals)
 
-from . import core
+from .. import core
 
 
 __all__ = ['SimpleWidget', 'ValueList', 'KeyValueList']
