@@ -26,7 +26,7 @@ class SimpleTagsTest(TestCase):
         data = {'a': None, 'b': 0}
         json_data = jsonify(data)
 
-        # Maeked safe
+        # Marked safe
         self.assertTrue(hasattr(json_data, '__html__'))
         self.assertEqual(json_data, json.dumps(data))
 
@@ -300,13 +300,13 @@ class ChangeurlTest(TestCase):
 
     def test_non_registered(self):
         # It's not registered so no reverse is possible
-        class NonRegisterdModel(widgets.ItemList):
+        class NonRegisteredModel(widgets.ItemList):
             queryset = ContentType.objects.all()
 
-        self.equal(NonRegisterdModel, None)
+        self.equal(NonRegisteredModel, None)
 
     def test_no_model(self):
-        # Model queryset + Deffered
+        # Model queryset + Deferred
         self.equal(self.ModelQuerySet, self.obj_url)
         self.equal(self.DeferredQuerySet, self.obj_url)
 

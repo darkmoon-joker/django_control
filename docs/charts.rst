@@ -10,7 +10,7 @@ Django-controlcenter uses Chartist.js_ to create beautiful, responsive and dpi i
     Represents values on y-axis.
 
     .. note::
-        Except for the ``SinglBarChart`` and ``SinglePieChart`` classes, this method must return a list of lists.
+        Except for the ``SingleBarChart`` and ``SinglePieChart`` classes, this method must return a list of lists.
 
 ``legend``
     Chartist.js_ doesn't display series on chart which is really odd. As a workaround you can duplicate values on x-axis and then put labels in legend (and vice versa). Here is an example:
@@ -46,7 +46,7 @@ Chartist
             }
 
 
-When you define ``Chartist`` it inherits chart's parent's ``Chartist`` properties automaticly. The reason why hacky ineritance is used is the ``options`` property.
+When you define ``Chartist`` it inherits chart's parent's ``Chartist`` properties automatically. The reason why hacky inheritance is used is the ``options`` property.
 
 ``options``
     It's a nested dictionary of options to be passed to Chartist.js_ constructor. Python dictionaries can't be inherited properly in a classic way. That's why when you define ``options`` in child ``Chartist`` class it deep copies and merges parent's one with it's own.
@@ -91,7 +91,7 @@ When you define ``Chartist`` it inherits chart's parent's ``Chartist`` propertie
 LineChart
 ---------
 
-Line chart with point labels and usefull Chartist.js_ settings. This chart type is usually used to display latest data dynamic sorted by date which comes in backward order from database (because you order entries by date and then slice them). ``LineChart`` passes ``'reversData': True`` option to Chartist constructor which reverses ``series`` and ``labels``.
+Line chart with point labels and useful Chartist.js_ settings. This chart type is usually used to display latest data dynamic sorted by date which comes in backward order from database (because you order entries by date and then slice them). ``LineChart`` passes ``'reverseData': True`` option to Chartist constructor which reverses ``series`` and ``labels``.
 
 
 BarChart
