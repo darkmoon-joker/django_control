@@ -43,7 +43,7 @@ I'm going to put all imports in here just to not mess up the code blocks:
     from .pizza.models import Order, Pizza, Restaurant
 
 
-Scrolable ItemList with fixed height
+Scrollable ItemList with fixed height
 ------------------------------------
 
 Set ``height`` to make ``ItemList`` scrollable.
@@ -215,7 +215,7 @@ LineChart widget with multiple series
             }
 
         def legend(self):
-            # Displays restauraut names in legend
+            # Displays restaurant names in legend
             return RESTAURANTS
 
         def labels(self):
@@ -236,7 +236,7 @@ LineChart widget with multiple series
             return series
 
         def values(self):
-            # Increases limit_to by multiplying it on restautant quantity
+            # Increases limit_to by multiplying it on restaurant quantity
             limit_to = self.limit_to * len(self.legend)
             queryset = self.get_queryset()
             # This is how `GROUP BY` can be made in django by two fields:

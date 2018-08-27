@@ -27,7 +27,7 @@
         margin (- offset-y) 0 0 (- offset-x)
 
         // Ignores masonry
-        @media (max-width $screem-sm  - 1px)
+        @media (max-width $screen-sm  - 1px)
             position relative !important
             height auto !important
 
@@ -42,14 +42,14 @@
             height 0
 
         // Ignores masonry
-        @media (max-width $screem-sm  - 1px)
+        @media (max-width $screen-sm  - 1px)
             position relative !important
             left auto !important
             top auto !important
 
         cols = 6
-        @media (min-width $screem-sm)
-            // Marsony needs all classes to be defined explicitly
+        @media (min-width $screen-sm)
+            // Masonry needs all classes to be defined explicitly
             // or it makes a mess
             for i in range(1, (cols - 3))
                 &--w{i}
@@ -58,9 +58,9 @@
             &--w4, &--w5, &--w6
                  width 100%
 
-        @media (min-width $screem-md)
+        @media (min-width $screen-md)
             // We don't need all this columns
-            // but Marsony needs a real grid to calculate width
+            // but Masonry needs a real grid to calculate width
             &--w1
                 width ((1 / 4) * 100)%
             &--w2
@@ -110,12 +110,12 @@
 
             & + ^[-2]__body
                 // Tab's body next to active tab makes it visible.
-                // Somehow `dislay: none` brakes Chartist so we can't use it.
+                // Somehow `display: none` breaks Chartist so we can't use it.
                 // `height: 0` works too but different children heights
-                // brake Marsony grid
+                // break Masonry grid
                 visibility visible
 
-                @media (max-width $screem-sm  - 1px)
+                @media (max-width $screen-sm  - 1px)
                     position relative
 
                 & + ^[-3]__out
@@ -134,7 +134,7 @@
         position relative
         z-index 1
 
-        @media (max-width $screem-sm  - 1px)
+        @media (max-width $screen-sm  - 1px)
             position absolute
 
 
@@ -312,7 +312,7 @@
     > h1
         display none
 
-    @media (max-width $screem-md  - 1px)
+    @media (max-width $screen-md  - 1px)
         &,
         /.breadcrumbs,
         /#header

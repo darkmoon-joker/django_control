@@ -49,7 +49,7 @@ initial                              100%
 > 1000px               25%   33%   50%   66%   75%  100%
 ===================== ===== ===== ===== ===== ===== =====
 
-Most usefull sizes are available in ``widgets`` module:
+Most useful sizes are available in ``widgets`` module:
 
 .. code-block:: python
 

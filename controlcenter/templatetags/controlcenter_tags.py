@@ -61,7 +61,7 @@ def change_url(widget, obj):
         if not widget.list_display:
             # No chance to guess pk
             return
-        # Excludes shart tip zip keys and values
+        # Excludes sharp tip zip keys and values
         keys = (k for k in widget.list_display if k != app_settings.SHARP)
         new_obj = {x: y for x, y in zip(keys, obj)}
         return change_url(widget, new_obj)
@@ -71,7 +71,7 @@ def change_url(widget, obj):
             # Namedtuples and custom stuff
             meta = widget.model._meta
         elif getattr(obj, '_deferred', False):
-            # Deffered model
+            # Deferred model
             meta = obj._meta.proxy_for_model._meta
         else:
             # Regular model or django 1.10 deferred

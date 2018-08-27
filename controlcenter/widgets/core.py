@@ -13,8 +13,8 @@ __all__ = ['Group', 'ItemList', 'Widget', 'SMALL', 'MEDIUM', 'LARGE',
 
 
 # Actually we don't need all that sizes
-# but should have a grid for Marsony
-# so I'm going to leave the most helpfull ones
+# but should have a grid for Masonry
+# so I'm going to leave the most helpful ones
 
 SMALL = 1    # 25%  or  [x] + [x] + [x] + [x]
 MEDIUM = 2   # 33%  or  [ x ] + [ x ] + [ x ]
