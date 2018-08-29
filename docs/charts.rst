@@ -94,6 +94,60 @@ LineChart
 Line chart with point labels and useful Chartist.js_ settings. This chart type is usually used to display latest data dynamic sorted by date which comes in backward order from database (because you order entries by date and then slice them). ``LineChart`` passes ``'reverseData': True`` option to Chartist constructor which reverses ``series`` and ``labels``.
 
 
+TimeSeriesChart
+---------------
+
+A variant of ``LineChart`` for time-series data.
+
+This chart does not define ``labels``. Instead, each ``series`` must consist of pairs of ``x`` and ``y`` values,
+where ``x`` is a POSIX timestamp (as returned by `datetime.timestamp`_).
+
+.. code-block:: python
+
+    class MyTimeSeriesChart(widgets.TimeSeriesChart):
+
+        def series(self):
+            return [
+                [{'x': when.timestamp(), 'y': value} for (when, value) in samples],
+            ]
+
+The X-axis timestamp labels will be formatted using `Date.toLocaleString`_.
+
+To customise the timestamp label formatting, specify ``Date.toLocaleString``'s ``options`` parameter
+using the ``timestamp_options`` configuration property.
+For example, to only show the year and short month as labels:
+
+.. code-block:: python
+
+    class MyTimeSeriesChart(widgets.TimeSeriesChart):
+        class Chartist:
+            timestamp_options = {
+                'year': 'numeric',
+                'month': 'short',
+            }
+
+To specify when ticks shown, see the `Chartist.FixedScaleAxis`_ documentation.
+For example:
+
+.. code-block:: python
+
+    class MyTimeSeriesChart(widgets.TimeSeriesChart):
+        class Chartist:
+            options = {
+                'axisX': {
+                    # Use 'divisions' for a fixed number of sub-division ticks.
+                    'divisions': 4,
+                    # Alternatively, use 'ticks' to explicitly specify a list of timestamps.
+                },
+            }
+
+
+
+.. _`datetime.timestamp`: https://docs.python.org/3/library/datetime.html#datetime.datetime.timestamp
+.. _`Date.toLocaleString`: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString
+.. _`Chartist.FixedScaleAxis`: https://gionkunz.github.io/chartist-js/api-documentation.html#module-chartistfixedscaleaxis
+
+
 BarChart
 --------
 
