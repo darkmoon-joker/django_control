@@ -10,7 +10,7 @@ except ImportError:
 from django.db import models
 from django.db.models.base import ModelBase
 from django.utils import six
-from django.utils.html import conditional_escape, mark_safe
+from django.utils.html import conditional_escape, format_html, mark_safe
 from django.utils.http import urlencode
 
 from .. import app_settings
@@ -209,8 +209,8 @@ def attrlabel(widget, attrname):
 
 @register.simple_tag
 def external_link(url, label=None):
-    return mark_safe(
+    return format_html(
         '<a href="{href}" target="_blank" '
-        'rel="noreferrer" rel="noopener">{label}</a>'
-        .format(href=url, label=label or url)
+        'rel="noreferrer" rel="noopener">{label}</a>',
+        href=url, label=label or url,
     )
