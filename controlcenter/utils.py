@@ -5,6 +5,11 @@ from django.utils.text import camel_case_to_spaces, capfirst
 __all__ = ['captitle', 'deepmerge']
 
 
+# Hashable data used with `generic_item.html` template
+DataItem = collections.namedtuple('DataItem', 'label url help_text')
+DataItem.__new__.__defaults__ = ('',) * len(DataItem._fields)
+
+
 def captitle(title):
     return capfirst(camel_case_to_spaces(title))
 
