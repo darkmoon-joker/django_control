@@ -114,14 +114,14 @@ class GroupTest(TestCase):
     def test_empty_group(self):
         group = widgets.Group()
 
-        # It's empty and imutable
+        # It's empty and immutable
         self.assertEqual(group.widgets, ())
 
         # __iter__ test
         self.assertItemsEqual(group, [])
         self.assertEqual(len(group), 0)
 
-        # Attribtues test
+        # Attributes test
         self.assertEqual(group.get_id(), '')
         self.assertEqual(group.get_class(), '')
         self.assertEqual(group.get_attrs(), {})
@@ -131,14 +131,14 @@ class GroupTest(TestCase):
     def test_nonempty_group(self):
         group = widgets.Group([self.widget0])
 
-        # It's empty and imutable
+        # It's empty and immutable
         self.assertEqual(group.widgets, (self.widget0,))
 
         # __iter__
         self.assertItemsEqual(group, (self.widget0,))
         self.assertEqual(len(group), 1)
 
-        # Attribtues test
+        # Attributes test
         self.assertEqual(group.get_id(), 'itemlist')
         self.assertEqual(group.get_class(), '')
         self.assertEqual(group.get_attrs(), {})
@@ -150,21 +150,21 @@ class GroupTest(TestCase):
                  widgets.Group([self.widget1],
                                attrs={'class': 'clearfix', 'data-prop': '2'}))
 
-        # It's empty and imutable
+        # It's empty and immutable
         self.assertEqual(group.widgets, (self.widget0, self.widget1))
 
         # __iter__
         self.assertItemsEqual(group, (self.widget0, self.widget1))
         self.assertEqual(len(group), 2)
 
-        # Attribtues test
+        # Attributes test
         self.assertEqual(group.get_id(), 'itemlist_and_itemlist')
         self.assertEqual(group.get_class(), 'clearfix')
         self.assertEqual(group.get_attrs(), {'data-prop': '2'})
         self.assertEqual(group.get_width(), widgets.LARGE)
         self.assertEqual(group.get_height(), 300)
 
-        # Unkown attr
+        # Unknown attr
         self.assertIsNone(group._get_size('length'))
 
         # Overwrite width

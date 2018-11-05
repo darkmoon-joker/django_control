@@ -3,7 +3,7 @@ from django.utils import six
 from ..utils import deepmerge
 from .core import Widget, WidgetMeta
 
-__all__ = ['LineChart', 'BarChart', 'PieChart',
+__all__ = ['LineChart', 'TimeSeriesChart', 'BarChart', 'PieChart',
            'SingleLineChart', 'SingleBarChart', 'SinglePieChart',
            'LINE', 'BAR', 'PIE']
 
@@ -83,6 +83,18 @@ class LineChart(Chart):
             },
             'fullWidth': True,
         }
+
+
+class TimeSeriesChart(Chart):
+    class Chartist:
+        point_lables = True
+        options = {
+            'axisY': {
+                'onlyInteger': True,  # Same default as LineChart.
+            },
+        }
+        time_series = True
+        timestamp_options = {}
 
 
 class BarChart(Chart):

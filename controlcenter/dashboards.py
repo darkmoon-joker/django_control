@@ -21,9 +21,10 @@ class Dashboard(six.with_metaclass(MediaDefiningClass, BaseModel)):
     class Media:
         css = {
             'all': [
+                'controlcenter/css/chartist.css',
+                # This must follow chartist.css to override correctly:
                 ('controlcenter/css/chartist-{}-colors.css'
                  .format(app_settings.CHARTIST_COLORS)),
-                'controlcenter/css/chartist.css',
                 'controlcenter/css/all.css',
             ]
         }

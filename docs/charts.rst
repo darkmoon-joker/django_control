@@ -10,7 +10,7 @@ Django-controlcenter uses Chartist.js_ to create beautiful, responsive and dpi i
     Represents values on y-axis.
 
     .. note::
-        Except for the ``SinglBarChart`` and ``SinglePieChart`` classes, this method must return a list of lists.
+        Except for the ``SingleBarChart`` and ``SinglePieChart`` classes, this method must return a list of lists.
 
 ``legend``
     Chartist.js_ doesn't display series on chart which is really odd. As a workaround you can duplicate values on x-axis and then put labels in legend (and vice versa). Here is an example:
@@ -46,7 +46,7 @@ Chartist
             }
 
 
-When you define ``Chartist`` it inherits chart's parent's ``Chartist`` properties automaticly. The reason why hacky ineritance is used is the ``options`` property.
+When you define ``Chartist`` it inherits chart's parent's ``Chartist`` properties automatically. The reason why hacky inheritance is used is the ``options`` property.
 
 ``options``
     It's a nested dictionary of options to be passed to Chartist.js_ constructor. Python dictionaries can't be inherited properly in a classic way. That's why when you define ``options`` in child ``Chartist`` class it deep copies and merges parent's one with it's own.
@@ -91,7 +91,61 @@ When you define ``Chartist`` it inherits chart's parent's ``Chartist`` propertie
 LineChart
 ---------
 
-Line chart with point labels and usefull Chartist.js_ settings. This chart type is usually used to display latest data dynamic sorted by date which comes in backward order from database (because you order entries by date and then slice them). ``LineChart`` passes ``'reversData': True`` option to Chartist constructor which reverses ``series`` and ``labels``.
+Line chart with point labels and useful Chartist.js_ settings. This chart type is usually used to display latest data dynamic sorted by date which comes in backward order from database (because you order entries by date and then slice them). ``LineChart`` passes ``'reverseData': True`` option to Chartist constructor which reverses ``series`` and ``labels``.
+
+
+TimeSeriesChart
+---------------
+
+A variant of ``LineChart`` for time-series data.
+
+This chart does not define ``labels``. Instead, each ``series`` must consist of pairs of ``x`` and ``y`` values,
+where ``x`` is a POSIX timestamp (as returned by `datetime.timestamp`_).
+
+.. code-block:: python
+
+    class MyTimeSeriesChart(widgets.TimeSeriesChart):
+
+        def series(self):
+            return [
+                [{'x': when.timestamp(), 'y': value} for (when, value) in samples],
+            ]
+
+The X-axis timestamp labels will be formatted using `Date.toLocaleString`_.
+
+To customise the timestamp label formatting, specify ``Date.toLocaleString``'s ``options`` parameter
+using the ``timestamp_options`` configuration property.
+For example, to only show the year and short month as labels:
+
+.. code-block:: python
+
+    class MyTimeSeriesChart(widgets.TimeSeriesChart):
+        class Chartist:
+            timestamp_options = {
+                'year': 'numeric',
+                'month': 'short',
+            }
+
+To specify when ticks shown, see the `Chartist.FixedScaleAxis`_ documentation.
+For example:
+
+.. code-block:: python
+
+    class MyTimeSeriesChart(widgets.TimeSeriesChart):
+        class Chartist:
+            options = {
+                'axisX': {
+                    # Use 'divisions' for a fixed number of sub-division ticks.
+                    'divisions': 4,
+                    # Alternatively, use 'ticks' to explicitly specify a list of timestamps.
+                },
+            }
+
+
+
+.. _`datetime.timestamp`: https://docs.python.org/3/library/datetime.html#datetime.datetime.timestamp
+.. _`Date.toLocaleString`: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString
+.. _`Chartist.FixedScaleAxis`: https://gionkunz.github.io/chartist-js/api-documentation.html#module-chartistfixedscaleaxis
 
 
 BarChart

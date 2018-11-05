@@ -12,6 +12,7 @@ from controlcenter.templatetags.controlcenter_tags import (
     attrvalue,
     change_url,
     changelist_url,
+    external_link,
     is_sequence,
     jsonify,
     legend_color,
@@ -26,7 +27,7 @@ class SimpleTagsTest(TestCase):
         data = {'a': None, 'b': 0}
         json_data = jsonify(data)
 
-        # Maeked safe
+        # Marked safe
         self.assertTrue(hasattr(json_data, '__html__'))
         self.assertEqual(json_data, json.dumps(data))
 
@@ -300,13 +301,13 @@ class ChangeurlTest(TestCase):
 
     def test_non_registered(self):
         # It's not registered so no reverse is possible
-        class NonRegisterdModel(widgets.ItemList):
+        class NonRegisteredModel(widgets.ItemList):
             queryset = ContentType.objects.all()
 
-        self.equal(NonRegisterdModel, None)
+        self.equal(NonRegisteredModel, None)
 
     def test_no_model(self):
-        # Model queryset + Deffered
+        # Model queryset + Deferred
         self.equal(self.ModelQuerySet, self.obj_url)
         self.equal(self.DeferredQuerySet, self.obj_url)
 
@@ -349,3 +350,19 @@ class ChangeurlTest(TestCase):
             queryset = model.objects.values_list('email')
 
         self.equal(NoPkList, None)
+
+
+class ExternalLinkTest(TestCase):
+    def test_no_label(self):
+        self.assertEqual(
+            external_link('http://example.com'),
+            '<a href="http://example.com" target="_blank" '
+            'rel="noreferrer" rel="noopener">http://example.com</a>',
+        )
+
+    def test_with_label(self):
+        self.assertEqual(
+            external_link('http://example.com', 'my-example-link'),
+            '<a href="http://example.com" target="_blank" '
+            'rel="noreferrer" rel="noopener">my-example-link</a>',
+        )

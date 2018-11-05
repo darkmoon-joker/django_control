@@ -10,7 +10,7 @@ except ImportError:
 from django.db import models
 from django.db.models.base import ModelBase
 from django.utils import six
-from django.utils.html import conditional_escape, mark_safe
+from django.utils.html import conditional_escape, format_html, mark_safe
 from django.utils.http import urlencode
 
 from .. import app_settings
@@ -61,7 +61,7 @@ def change_url(widget, obj):
         if not widget.list_display:
             # No chance to guess pk
             return
-        # Excludes shart tip zip keys and values
+        # Excludes sharp tip zip keys and values
         keys = (k for k in widget.list_display if k != app_settings.SHARP)
         new_obj = {x: y for x, y in zip(keys, obj)}
         return change_url(widget, new_obj)
@@ -71,7 +71,7 @@ def change_url(widget, obj):
             # Namedtuples and custom stuff
             meta = widget.model._meta
         elif getattr(obj, '_deferred', False):
-            # Deffered model
+            # Deferred model
             meta = obj._meta.proxy_for_model._meta
         else:
             # Regular model or django 1.10 deferred
@@ -205,3 +205,12 @@ def attrlabel(widget, attrname):
         except models.FieldDoesNotExist:
             pass
     return attrname
+
+
+@register.simple_tag
+def external_link(url, label=None):
+    return format_html(
+        '<a href="{href}" target="_blank" '
+        'rel="noreferrer" rel="noopener">{label}</a>',
+        href=url, label=label or url,
+    )

@@ -6,11 +6,11 @@ class EmptyDashboard(Dashboard):
 
 
 class MyWidget0(widgets.Widget):
-    pass
+    template_name = 'chart.html'
 
 
 class MyWidget1(widgets.Widget):
-    pass
+    template_name = 'chart.html'
 
 
 class NonEmptyDashboard(Dashboard):
