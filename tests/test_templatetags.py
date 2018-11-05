@@ -1,6 +1,5 @@
 import collections
 import json
-import re
 
 from django import VERSION
 from django.contrib.auth.models import User
@@ -354,20 +353,16 @@ class ChangeurlTest(TestCase):
 
 
 class ExternalLinkTest(TestCase):
-
-    def parse_href(self, text):
-        return re.search(r'href="([^"]*)"', text).groups()[0]
-
-    def parse_label(self, text):
-        return re.search(r'<a .*>(.*)</a>', text).groups()[0]
-
     def test_no_label(self):
-        url = 'http://example.com'
-        html_link = external_link(url)
-        self.assertEqual(self.parse_href(html_link), url)
-        self.assertEqual(self.parse_label(html_link), url)
+        self.assertEqual(
+            external_link('http://example.com'),
+            '<a href="http://example.com" target="_blank" '
+            'rel="noreferrer" rel="noopener">http://example.com</a>',
+        )
 
     def test_with_label(self):
-        html_link = external_link('http://example.com', 'my-example-link')
-        self.assertEqual(self.parse_href(html_link), 'http://example.com')
-        self.assertEqual(self.parse_label(html_link), 'my-example-link')
+        self.assertEqual(
+            external_link('http://example.com', 'my-example-link'),
+            '<a href="http://example.com" target="_blank" '
+            'rel="noreferrer" rel="noopener">my-example-link</a>',
+        )
