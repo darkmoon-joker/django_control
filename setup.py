@@ -2,7 +2,7 @@ from setuptools import find_packages, setup
 
 setup(
     name='django-controlcenter',
-    version='0.2.6',
+    version='0.2.7',
     description='Set of widgets to build dashboards for your Django-project.',
     long_description='',
     url='https://github.com/byashimov/django-controlcenter',

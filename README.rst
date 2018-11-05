@@ -100,6 +100,14 @@ This project uses Chartist.js_, Masonry.js_ and Sortable.js_.
 Changelog
 ---------
 
+0.2.7
+~~~~~
+
+- New ``TimeSeriesChart`` widget. Thanks to @pjdelport.
+- New "simple" widgets: ``ValueList`` and ``KeyValueList``. Thanks to @tonysyu.
+- Bunch of fixes and improvements, thanks again to @pjdelport.
+
+
 0.2.6
 ~~~~~
 
