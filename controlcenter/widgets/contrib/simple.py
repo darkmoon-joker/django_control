@@ -21,7 +21,9 @@ class BaseSimpleWidget(core.BaseWidget):
 
     @abstractmethod
     def get_data(self):
-        ...
+        """
+        Should be implemented in a subclass.
+        """
 
 
 class ValueList(BaseSimpleWidget):
