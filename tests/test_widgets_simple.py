@@ -3,12 +3,7 @@ from controlcenter.widgets.contrib import simple
 from . import TestCase
 
 
-FAKE_VALUE_LIST = ['Label 1', 'Label 2']
-FAKE_KEY_VALUE_LIST = {'Key 1': 'Value 1', 'Key 2': 'Value 2'}
-
-
 class ValueListTest(TestCase):
-
     def setUp(self):
         self.widget = ExampleValueList(request=None)
 
@@ -19,11 +14,10 @@ class ValueListTest(TestCase):
         self.assertFalse(self.widget.sortable)
 
     def test_get_data(self):
-        self.assertItemsEqual(self.widget.items(), FAKE_VALUE_LIST)
+        self.assertItemsEqual(self.widget.items(), ['Label 1', 'Label 2'])
 
 
 class KeyValueListTest(TestCase):
-
     def setUp(self):
         self.widget = ExampleKeyValueList(request=None)
 
@@ -34,18 +28,21 @@ class KeyValueListTest(TestCase):
         self.assertFalse(self.widget.sortable)
 
     def test_get_data(self):
-        self.assertItemsEqual(self.widget.items(), FAKE_KEY_VALUE_LIST.items())
+        self.assertItemsEqual(
+            self.widget.items(),
+            {'Key 1': 'Value 1', 'Key 2': 'Value 2'}.items(),
+        )
 
 
 class ExampleValueList(simple.ValueList):
     title = 'Value list widget'
 
     def get_data(self):
-        return FAKE_VALUE_LIST
+        return ['Label 1', 'Label 2']
 
 
 class ExampleKeyValueList(simple.KeyValueList):
     title = 'Key-value list widget'
 
     def get_data(self):
-        return FAKE_KEY_VALUE_LIST
+        return {'Key 1': 'Value 1', 'Key 2': 'Value 2'}
