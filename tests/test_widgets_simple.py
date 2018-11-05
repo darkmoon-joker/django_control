@@ -7,16 +7,6 @@ FAKE_VALUE_LIST = ['Label 1', 'Label 2']
 FAKE_KEY_VALUE_LIST = {'Key 1': 'Value 1', 'Key 2': 'Value 2'}
 
 
-class SimpleWidgetTest(TestCase):
-
-    def setUp(self):
-        self.widget = simple.SimpleWidget(request=None)
-
-    def test_get_data_raises(self):
-        with self.assertRaises(NotImplementedError):
-            self.widget.get_data()
-
-
 class ValueListTest(TestCase):
 
     def setUp(self):
@@ -26,7 +16,7 @@ class ValueListTest(TestCase):
         self.assertIsNotNone(self.widget.template_name)
 
     def test_default_not_sortable(self):
-        self.assertFalse(self.widget.show_column_headers())
+        self.assertFalse(self.widget.sortable)
 
     def test_get_data(self):
         self.assertItemsEqual(self.widget.items(), FAKE_VALUE_LIST)
@@ -41,7 +31,7 @@ class KeyValueListTest(TestCase):
         self.assertIsNotNone(self.widget.template_name)
 
     def test_default_not_sortable(self):
-        self.assertFalse(self.widget.show_column_headers())
+        self.assertFalse(self.widget.sortable)
 
     def test_get_data(self):
         self.assertItemsEqual(self.widget.items(), FAKE_KEY_VALUE_LIST.items())
