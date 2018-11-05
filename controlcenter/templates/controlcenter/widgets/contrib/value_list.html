@@ -1,7 +1,7 @@
 {% load controlcenter_tags %}
 
 <table class="controlcenter__table" {% if widget.sortable and widget.items|length > 1 %}data-sortable{% endif %}>
-    {% if widget.items and widget.show_column_headers %}
+    {% if widget.items and widget.sortable %}
         <thead class="controlcenter__table__thead">
             <tr class="controlcenter__table__tr">
                 <th class="controlcenter__table__th controlcenter__table__th--value">{{ widget.value_column_label|default:'Value' }}</th>

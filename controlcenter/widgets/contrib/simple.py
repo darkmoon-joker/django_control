@@ -1,45 +1,45 @@
 """
-Generic widgets for `django-controlcenter` dashboards that don't require model data.
+Generic widgets for `django-controlcenter` dashboards that don't require
+model data.
 """
-from __future__ import (absolute_import, division, print_function, unicode_literals)
+
+from abc import abstractmethod
+from collections import namedtuple
 
 from .. import core
 
+__all__ = ['BaseSimpleWidget', 'ValueList', 'KeyValueList', 'DataItem']
 
-__all__ = ['SimpleWidget', 'ValueList', 'KeyValueList']
+
+DataItem = namedtuple('DataItem', 'label url help_text')
+DataItem.__new__.__defaults__ = ('', '', '')
 
 
-class SimpleWidget(core.BaseWidget):
-
+class BaseSimpleWidget(core.BaseWidget):
     width = core.MEDIUM
-    template_name_prefix = 'controlcenter/widgets'
+    template_name_prefix = 'controlcenter/widgets/contrib'
 
+    @abstractmethod
     def get_data(self):
-        raise NotImplementedError("SimpleWidget subclass must implement `get_data`")
+        """
+        Should be implemented in a subclass.
+        """
 
 
-class ValueList(SimpleWidget):
-
+class ValueList(BaseSimpleWidget):
     template_name = 'value_list.html'
     value_column_label = None
     sortable = False
-
-    def show_column_headers(self):
-        return self.sortable or self.value_column_label
 
     def items(self):
         return self.get_data()
 
 
-class KeyValueList(SimpleWidget):
-
+class KeyValueList(BaseSimpleWidget):
     template_name = 'key_value_list.html'
     key_column_label = None
     value_column_label = None
     sortable = False
-
-    def show_column_headers(self):
-        return self.sortable or self.key_column_label or self.value_column_label
 
     def items(self):
         return self.get_data().items()

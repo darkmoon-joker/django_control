@@ -1,6 +1,7 @@
 import collections
 import itertools
 import os
+from abc import ABCMeta
 
 from django.core.exceptions import ImproperlyConfigured
 from django.utils import six
@@ -24,7 +25,7 @@ LARGEST = 5  # 75%  or  [      x      ] + [x]
 FULL = 6     # 100% or  [         x         ]
 
 
-class WidgetMeta(type):
+class WidgetMeta(ABCMeta):
     # Makes certain methods cached
     CACHED_ATTRS = (
         # values for charts and itemlists
@@ -48,7 +49,6 @@ class BaseWidget(six.with_metaclass(WidgetMeta, BaseModel)):
     cache_timeout = None
     template_name = None
     template_name_prefix = None
-    cache_timeout = None
     limit_to = None
     width = None
     height = None

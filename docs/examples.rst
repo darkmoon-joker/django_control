@@ -278,7 +278,7 @@ or it can be dictionaries or objects with the following attributes:
 - ``help_text``: If present, display additional text accompanying label
 
 If you want to specify these fields for a dictionary key, you'll need
-use ``DataItem`` from ``controlcenter.utils``, since you can't use a
+use ``DataItem`` from ``controlcenter.widgets.contrib``, since you can't use a
 dictionary as a key to a dictionary because it's not hashable.
 
 .. code-block:: python
@@ -290,7 +290,6 @@ dictionary as a key to a dictionary because it's not hashable.
 
     class DebuggingEndpointsWidget(widgets.ValueList):
         title = 'Debugging Endpoints'
-
         subtitle = 'Links for debugging application issues'
 
         def get_data(self):
