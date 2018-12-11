@@ -1,10 +1,19 @@
+from io import open
+from os import path
+
 from setuptools import find_packages, setup
+
+here = path.abspath(path.dirname(__file__))
+
+# Get the long description from the README file
+with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
+    long_description = f.read()
 
 setup(
     name='django-controlcenter',
-    version='0.2.7',
+    version='0.2.8',
     description='Set of widgets to build dashboards for your Django-project.',
-    long_description='',
+    long_description=long_description,
     url='https://github.com/byashimov/django-controlcenter',
     author='Murad Byashimov',
     author_email='byashimov@gmail.com',
