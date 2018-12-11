@@ -10,7 +10,7 @@
 
         var options = ({{ widget.chartist.options|jsonify }} || {});
 
-        {% if widget.chartist.klass == 'Line' and widget.chartist.point_lables %}
+        {% if widget.chartist.klass == 'Line' and widget.chartist.point_labels %}
             options.plugins = [
                 Chartist.plugins.ctPointLabels({
                   textAnchor: 'middle',

@@ -39,7 +39,7 @@ Chartist
 
     class MyChart(widgets.Chart):
         class Chartist:
-            point_lables = True
+            point_labels = True
             options = {
                 'reverseData': True,
                 ...
@@ -55,7 +55,7 @@ When you define ``Chartist`` it inherits chart's parent's ``Chartist`` propertie
 
         class MyChart(widgets.Chart):
             class Chartist:
-                point_lables = True
+                point_labels = True
                 options = {
                     'reverseData': True,
                     'foo': {
@@ -73,7 +73,7 @@ When you define ``Chartist`` it inherits chart's parent's ``Chartist`` propertie
         MyNewChart.chartist.options['reverseData']  # True
         MyNewChart.chartist.options['foo']['bar']  # True
         MyNewChart.chartist.options['fullWidth']  # True
-        MyNewChart.chartist.point_lables  # True
+        MyNewChart.chartist.point_labels  # True
 
 ``klass``
     Type of the chart. Available values are defined in ``widgets`` module: ``LINE``, ``BAR`` and ``PIE``. Default is ``LINE``.

@@ -73,7 +73,7 @@ class Chart(six.with_metaclass(ChartMeta, Widget)):
 
 class LineChart(Chart):
     class Chartist:
-        point_lables = True
+        point_labels = True
         options = {
             # In common cases you need something last ordered by descending,
             # setting `reverseData` all the time is just annoying
@@ -87,7 +87,7 @@ class LineChart(Chart):
 
 class TimeSeriesChart(Chart):
     class Chartist:
-        point_lables = True
+        point_labels = True
         options = {
             'axisY': {
                 'onlyInteger': True,  # Same default as LineChart.
