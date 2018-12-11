@@ -100,6 +100,14 @@ This project uses Chartist.js_, Masonry.js_ and Sortable.js_.
 Changelog
 ---------
 
+0.2.8
+~~~~~
+
+- Fixed ``key_value_list.html`` widget template syntax error.
+- Fixed attribute typo ``widget.chartist.point_labels -> point_lables``.
+
+Thanks to @minusf.
+
 0.2.7
 ~~~~~
 

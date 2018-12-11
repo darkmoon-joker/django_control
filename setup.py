@@ -11,7 +11,7 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 
 setup(
     name='django-controlcenter',
-    version='0.2.7',
+    version='0.2.8',
     description='Set of widgets to build dashboards for your Django-project.',
     long_description=long_description,
     url='https://github.com/byashimov/django-controlcenter',
