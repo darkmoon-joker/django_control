@@ -1,5 +1,5 @@
 {% load controlcenter_tags %}
-<table class="controlcenter__table" {% if widget.sortable and widget.values|length > 1 %}data-sortable{% endif %}>
+<table class="controlcenter__table"{% if widget.sortable and widget.values|length > 1 %} data-sortable{% endif %}>
     {% if widget.sortable and widget.list_display and widget.values %}
         <thead class="controlcenter__table__thead">
             <tr class="controlcenter__table__tr">

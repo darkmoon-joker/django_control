@@ -184,6 +184,10 @@
   word-wrap: break-word;
 }
 
+.controlcenter__table__th--row-counter,.controlcenter__table__td--row-counter {
+  text-align: right;
+}
+
 .controlcenter__table__td--row-counter {
   color: #ccc;
 }
