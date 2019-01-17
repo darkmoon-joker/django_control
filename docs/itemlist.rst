@@ -20,7 +20,7 @@ ItemList options
 ``list_display``
     For model objects, namedtuples and dictionaries, ``list_display`` is a list of fields or keys of object. For sequences index of each item in ``list_display`` becomes a key in object, i.e. ``dict(zip(list_display, sequence))``.
 
-    Widget's and model's class methods can be used in ``list_display`` just like in ``ModelAdmin.list_display``_. They must take an extra parameter for the object returned by ``values``. They may have two properties ``allow_tags`` (``True`` or ``False`` to allow or escape html tags) and ``short_description`` (for column name).
+    Widget's and model's class methods can be used in ``list_display`` just like in ``ModelAdmin.list_display``. They must take an extra parameter for the object returned by ``values``. They may have two properties ``allow_tags`` (``True`` or ``False`` to allow or escape html tags) and ``short_description`` (for column name).
 
 ``list_display_links``
     Keys or fields should be linked to object's admin page. If nothing is provided ``ItemList`` will try to link the first column.
