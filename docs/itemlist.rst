@@ -35,6 +35,6 @@ ItemList options
     Set ``True`` to make the list sortable.
 
     .. note::
-        ``ModelAdmin`` gets sorted data from the database and ``ItemList`` uses Sortable.js_ to sort rows in browser and it's not aware about fields data-type. That means you should be careful with sorting stuff like this: ``%d.%m``.
+        ``ModelAdmin`` gets sorted data from the database and ``ItemList`` uses Sortable.js to sort rows in browser and it's not aware about fields data-type. That means you should be careful with sorting stuff like this: ``%d.%m``.
 
 .. _ModelAdmin: https://docs.djangoproject.com/en/dev/ref/contrib/admin/#modeladmin-objects
