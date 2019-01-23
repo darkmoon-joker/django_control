@@ -33,15 +33,6 @@ def jsonify(obj):
 
 
 @register.filter
-def legend_color(index):
-    try:
-        return 'abcdefghijklmno'[index]
-    except IndexError:
-        # Have no as much colors as required
-        return legend_color(0)
-
-
-@register.filter
 def is_sequence(obj):
     return isinstance(obj, collections.Sequence)
 
