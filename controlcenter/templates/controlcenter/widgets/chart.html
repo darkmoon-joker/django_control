@@ -23,6 +23,8 @@
                   labelInterpolationFnc: function (label) {
                       return label.split(', ')[1];
                   },
+                  {% else %}
+                  labelInterpolationFnc: function (label) { return label ? label : 0 }
                   {% endif %}
                 })
             ];
