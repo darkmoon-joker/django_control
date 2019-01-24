@@ -15,7 +15,6 @@ from controlcenter.templatetags.controlcenter_tags import (
     external_link,
     is_sequence,
     jsonify,
-    legend_color,
 )
 from test_models import TestUser0, TestUser1
 
@@ -30,13 +29,6 @@ class SimpleTagsTest(TestCase):
         # Marked safe
         self.assertTrue(hasattr(json_data, '__html__'))
         self.assertEqual(json_data, json.dumps(data))
-
-    def test_legend_color(self):
-        for index, value in enumerate('abcdefghijklmno'):
-            self.assertEqual(legend_color(index), value)
-
-        # IndexError returns first color
-        self.assertEqual(legend_color(100), 'a')
 
     def test_is_sequence(self):
         self.assertTrue(is_sequence(list()))
