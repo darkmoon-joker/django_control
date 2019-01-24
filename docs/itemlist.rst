@@ -20,7 +20,7 @@ ItemList options
 ``list_display``
     For model objects, namedtuples and dictionaries, ``list_display`` is a list of fields or keys of object. For sequences index of each item in ``list_display`` becomes a key in object, i.e. ``dict(zip(list_display, sequence))``.
 
-    Widget's and model's class methods can be used in ``list_display`` just like in ``ModelAdmin.list_display``_. They must take an extra parameter for the object returned by ``values``. They may have two properties ``allow_tags`` (``True`` or ``False`` to allow or escape html tags) and ``short_description`` (for column name).
+    Widget's and model's class methods can be used in ``list_display`` just like in ``ModelAdmin.list_display``. They must take an extra parameter for the object returned by ``values``. They may have two properties ``allow_tags`` (``True`` or ``False`` to allow or escape html tags) and ``short_description`` (for column name).
 
 ``list_display_links``
     Keys or fields should be linked to object's admin page. If nothing is provided ``ItemList`` will try to link the first column.
@@ -35,6 +35,6 @@ ItemList options
     Set ``True`` to make the list sortable.
 
     .. note::
-        ``ModelAdmin`` gets sorted data from the database and ``ItemList`` uses Sortable.js_ to sort rows in browser and it's not aware about fields data-type. That means you should be careful with sorting stuff like this: ``%d.%m``.
+        ``ModelAdmin`` gets sorted data from the database and ``ItemList`` uses Sortable.js to sort rows in browser and it's not aware about fields data-type. That means you should be careful with sorting stuff like this: ``%d.%m``.
 
-.. _ModelAdmin: https://docs.djangoproject.com/en/1.9/ref/contrib/admin/#modeladmin-objects
+.. _ModelAdmin: https://docs.djangoproject.com/en/dev/ref/contrib/admin/#modeladmin-objects

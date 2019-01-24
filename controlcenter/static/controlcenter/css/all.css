@@ -176,6 +176,10 @@
   width: 1%;
 }
 
+.controlcenter__table__th--row-counter,.controlcenter__table__td--row-counter {
+  text-align: right;
+}
+
 .controlcenter__table__th {
   color: #888;
   text-transform: none;
