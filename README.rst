@@ -100,6 +100,16 @@ This project uses Chartist.js_, Masonry.js_ and Sortable.js_.
 Changelog
 ---------
 
+0.2.9
+~~~~~
+
+- ``chartist-plugin-pointlabels`` temporary fix
+- Added sorting triangles to ``ItemList``
+- ``ItemList`` header is now always displayed regardless sortability
+- Other misc improvements
+
+Thanks to @minusf.
+
 0.2.8
 ~~~~~
 
