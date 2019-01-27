@@ -23,6 +23,8 @@
                   labelInterpolationFnc: function (label) {
                       return label.split(', ')[1];
                   },
+                  {% else %}
+                  labelInterpolationFnc: function (label) { return label ? label : 0 }
                   {% endif %}
                 })
             ];
@@ -45,7 +47,7 @@
     <div class="controlcenter__chart-legend__offset">
         {% for series in widget.legend %}
             <div class="controlcenter__chart-legend__series">
-                <div class="controlcenter__chart-legend__series__color ct-legend-{{ forloop.counter0|legend_color }}"></div>
+              <div class="controlcenter__chart-legend__series__color ct-legend-{% cycle 'a' 'b' 'c' 'd' 'e' 'f' 'g' 'h' 'i' 'j' 'k' 'l' 'm' 'n' 'o' %}"></div>
                 <div class="controlcenter__chart-legend__series__label">{{ series }}</div>
             </div>
         {% endfor %}
