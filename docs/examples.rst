@@ -161,7 +161,9 @@ Displaying series in legend
         class Chartist:
             options = {
                 # Displays only integer values on y-axis
-                'onlyInteger': True,
+                'axisY': {
+                    'onlyInteger': True
+                },
                 # Visual tuning
                 'chartPadding': {
                     'top': 24,
