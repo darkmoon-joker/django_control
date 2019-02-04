@@ -164,6 +164,9 @@ Displaying series in legend
                 'axisY': {
                     'onlyInteger': True
                 },
+                'axisX': {
+                    'onlyInteger': True
+                },
                 # Visual tuning
                 'chartPadding': {
                     'top': 24,
