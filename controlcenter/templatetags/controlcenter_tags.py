@@ -1,30 +1,19 @@
 import collections
 import json
 from functools import partial
-import django
+
 from django import template
-try:
-    from django.urls import NoReverseMatch, reverse
-except ImportError:
-    from django.core.urlresolvers import NoReverseMatch, reverse
+from django.core.serializers.json import DjangoJSONEncoder
 from django.db import models
 from django.db.models.base import ModelBase
-from django.utils import six
+from django.urls import NoReverseMatch, reverse
 from django.utils.html import conditional_escape, format_html, mark_safe
 from django.utils.http import urlencode
 
 from .. import app_settings
 from ..utils import indexonly
 
-from django.core.serializers.json import DjangoJSONEncoder
-
 register = template.Library()
-
-if django.VERSION < (1, 9):
-    # Support older versions without implicit assignment support in simple_tag.
-    simple_tag = register.assignment_tag
-else:
-    simple_tag = register.simple_tag
 
 
 @register.filter
@@ -37,7 +26,7 @@ def is_sequence(obj):
     return isinstance(obj, collections.Sequence)
 
 
-@simple_tag
+@register.simple_tag
 def change_url(widget, obj):
 
     if not widget.model and not isinstance(obj, models.Model):
@@ -83,7 +72,7 @@ def change_url(widget, obj):
 @register.filter
 def changelist_url(widget):
     obj = widget.changelist_url
-    if not obj or isinstance(obj, six.string_types):
+    if not obj or isinstance(obj, str):
         # If it's None (empty) or provided a real url
         return obj
     elif isinstance(obj, (tuple, list)):
@@ -97,7 +86,7 @@ def changelist_url(widget):
     assert isinstance(model, ModelBase), (
         '{}.changelist_url should be a string or Model class, or a tuple '
         'with Model class as the first element.'.format(widget))
-    assert isinstance(params, (dict, six.string_types)), (
+    assert isinstance(params, (dict, str)), (
         'Widget.changelist_url\'s second element should be a dict or '
         'a string.')
 

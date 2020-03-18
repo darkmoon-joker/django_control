@@ -1,9 +1,5 @@
 from collections import OrderedDict
 
-try:
-    from django.urls import re_conf
-except ImportError:
-    from django.conf.urls import url as re_conf
 from django.contrib import admin
 from django.contrib.admin.views.decorators import staff_member_required
 from django.core.exceptions import ImproperlyConfigured
@@ -14,6 +10,12 @@ from django.utils.module_loading import import_string
 from django.views.generic.base import TemplateView
 
 from . import app_settings
+
+try:
+    from django.urls import re_conf
+except ImportError:
+    from django.conf.urls import url as re_conf
+
 
 
 class ControlCenter(object):

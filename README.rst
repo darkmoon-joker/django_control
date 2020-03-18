@@ -6,6 +6,19 @@ Get all your project models on one single page with charts and whistles.
 .. image:: https://cloud.githubusercontent.com/assets/1560043/14309295/b8c9aad0-fc05-11e5-96d0-44293d2d07ff.png
     :alt: django-controlcenter
 
+Attention!
+----------
+
+Unfortunately, I have no time to add new features.
+Please make PR if you need one:
+
+- branch from master
+- provide tests
+- add docs
+- update changelog
+
+That's it.
+
 
 Rationale
 ---------
@@ -88,7 +101,7 @@ Compatibility
     :alt: Codecov
     :target: https://codecov.io/github/byashimov/django-controlcenter?branch=master
 
-Tested on py 2.7, 3.4, 3.5, 3.6 with django 1.8—2.1.
+Tested on py 3.5, 3.6, 3.7, 3.8 with django 1.11, 2.2, 3.0.
 
 
 Credits
@@ -99,6 +112,12 @@ This project uses Chartist.js_, Masonry.js_ and Sortable.js_.
 
 Changelog
 ---------
+
+0.3.0
+~~~~~
+
+- Support django 3.0
+- Python 3 only
 
 0.2.9
 ~~~~~

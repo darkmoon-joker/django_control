@@ -1,5 +1,3 @@
-from django.utils import six
-
 from ..utils import deepmerge
 from .core import Widget, WidgetMeta
 
@@ -49,7 +47,7 @@ class ChartMeta(WidgetMeta):
         return new_class
 
 
-class Chart(six.with_metaclass(ChartMeta, Widget)):
+class Chart(Widget, metaclass=ChartMeta):
     template_name = 'chart.html'
 
     class Chartist:

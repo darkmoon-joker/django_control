@@ -2,14 +2,16 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ImproperlyConfigured
 from django.test.utils import override_settings
 
+from controlcenter import widgets
+
+from . import TestCase
+
 try:
     from django.urls import reverse
 except ImportError:
     from django.core.urlresolvers import reverse
 
-from controlcenter import widgets
 
-from . import TestCase
 
 
 @override_settings(CONTROLCENTER_DASHBOARDS=())
