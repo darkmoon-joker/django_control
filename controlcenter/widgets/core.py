@@ -4,7 +4,6 @@ import os
 from abc import ABCMeta
 
 from django.core.exceptions import ImproperlyConfigured
-from django.utils import six
 from django.utils.functional import cached_property
 
 from ..base import BaseModel
@@ -41,7 +40,7 @@ class WidgetMeta(ABCMeta):
         return super(WidgetMeta, mcs).__new__(mcs, name, bases, attrs)
 
 
-class BaseWidget(six.with_metaclass(WidgetMeta, BaseModel)):
+class BaseWidget(BaseModel, metaclass=WidgetMeta):
     title = None
     model = None
     queryset = None

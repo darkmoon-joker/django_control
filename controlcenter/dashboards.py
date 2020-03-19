@@ -1,11 +1,7 @@
 import collections
 
-try:
-    from django.urls import reverse
-except ImportError:
-    from django.core.urlresolvers import reverse
 from django.forms.widgets import MediaDefiningClass
-from django.utils import six
+from django.urls import reverse
 
 from . import app_settings
 from .base import BaseModel
@@ -14,7 +10,7 @@ from .widgets import Group
 __all__ = ['Dashboard']
 
 
-class Dashboard(six.with_metaclass(MediaDefiningClass, BaseModel)):
+class Dashboard(BaseModel, metaclass=MediaDefiningClass):
     pk = None
     widgets = ()
 

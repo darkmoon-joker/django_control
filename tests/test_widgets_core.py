@@ -3,7 +3,6 @@ import itertools
 from django.contrib.auth.models import User
 from django.core.exceptions import ImproperlyConfigured
 from django.db.models.query import QuerySet
-from django.utils import six
 
 from controlcenter import widgets
 from controlcenter.widgets.core import BaseWidget, WidgetMeta
@@ -13,7 +12,7 @@ from . import TestCase
 
 class WidgetMetaTest(TestCase):
     def test_property_cache(self):
-        class TestWidget(six.with_metaclass(WidgetMeta)):
+        class TestWidget(metaclass=WidgetMeta):
             def values(self):
                 return next(itertools.count())
 
