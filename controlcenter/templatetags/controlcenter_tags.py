@@ -50,7 +50,7 @@ def change_url(widget, obj):
         if not isinstance(obj, models.Model):
             # Namedtuples and custom stuff
             meta = widget.model._meta
-        elif getattr(obj, '_deferred', False):
+        elif getattr(obj, '_deferred', False):  # pragma: no cover
             # Deferred model
             meta = obj._meta.proxy_for_model._meta
         else:
